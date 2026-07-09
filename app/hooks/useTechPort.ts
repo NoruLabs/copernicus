@@ -1,3 +1,5 @@
+"use client";
+
 import { useQuery } from "@tanstack/react-query";
 
 export interface TechPortProject {
@@ -24,8 +26,15 @@ export function useTechPort() {
     queryFn: async () => {
       const res = await fetch("/api/techport");
       if (!res.ok) throw new Error("Failed to fetch TechPort projects");
-      return res.json();
+      const data = await res.json();
+      // Empty array means NASA feed isn't ready yet — throw so React Query retries
+      if (Array.isArray(data) && data.length === 0) {
+        throw new Error("TechPort feed not ready");
+      }
+      return data;
     },
-    staleTime: 1000 * 60 * 60, // 1 hour
+    staleTime: 1000 * 60 * 60,
+    retry: true,
+    retryDelay: 1000 * 30,
   });
 }

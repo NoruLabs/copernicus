@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
@@ -121,11 +121,8 @@ export function Header() {
                   key={tab.id}
                   href={`/${tab.id}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex flex-col items-center gap-1 rounded-xl px-2 py-2.5 text-[11px] font-medium transition-colors ${
-                    isActive
-                      ? "bg-accent text-accent-text"
-                      : "text-text-muted hover:bg-bg-card hover:text-text-secondary"
-                  }`}
+                  className="header-tab flex-col items-center gap-1 rounded-xl px-2 py-2.5 text-[11px] justify-center"
+                  data-active={isActive}
                   role="tab"
                   aria-selected={isActive}
                 >
@@ -140,4 +137,3 @@ export function Header() {
     </header>
   );
 }
-
