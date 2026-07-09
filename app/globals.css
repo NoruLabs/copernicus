@@ -414,87 +414,12 @@ select:focus-visible,
   }
 }
 
-@keyframes slide-in {
-  from {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes pulse-glow {
-  0%,
-  100% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
 .animate-fade-in {
   animation: fade-in 0.35s var(--ease-decelerate) forwards;
 }
 
 .animate-fade-in-scale {
   animation: fade-in-scale 0.4s var(--ease-decelerate) forwards;
-}
-
-.animate-slide-in {
-  animation: slide-in 0.3s var(--ease-decelerate) forwards;
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Stagger children */
-.stagger-children > * {
-  opacity: 0;
-  animation: fade-in 0.35s var(--ease-decelerate) forwards;
-}
-
-.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
-.stagger-children > *:nth-child(2) { animation-delay: 60ms; }
-.stagger-children > *:nth-child(3) { animation-delay: 120ms; }
-.stagger-children > *:nth-child(4) { animation-delay: 180ms; }
-.stagger-children > *:nth-child(5) { animation-delay: 240ms; }
-.stagger-children > *:nth-child(6) { animation-delay: 300ms; }
-.stagger-children > *:nth-child(7) { animation-delay: 360ms; }
-.stagger-children > *:nth-child(8) { animation-delay: 420ms; }
-.stagger-children > *:nth-child(9) { animation-delay: 480ms; }
-.stagger-children > *:nth-child(10) { animation-delay: 540ms; }
-.stagger-children > *:nth-child(11) { animation-delay: 600ms; }
-.stagger-children > *:nth-child(12) { animation-delay: 660ms; }
-
-/* ─────────────────────────────────────────────────────
-   LOADING / PLACEHOLDERS
-   ───────────────────────────────────────────────────── */
-.skeleton {
-  background: var(--border);
-  border-radius: var(--radius-sm);
 }
 
 /* ─────────────────────────────────────────────────────
@@ -556,14 +481,6 @@ select:focus-visible,
   -webkit-line-clamp: 3;
 }
 
-.line-clamp-4 {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  line-clamp: 4;
-  -webkit-line-clamp: 4;
-}
-
 /* ─────────────────────────────────────────────────────
    ACCESSIBILITY
    ───────────────────────────────────────────────────── */
@@ -579,51 +496,14 @@ select:focus-visible,
   border-width: 0;
 }
 
-/* ─────────────────────────────────────────────────────
-   LIBRARY FIXES
-   ───────────────────────────────────────────────────── */
-.recharts-tooltip-wrapper {
-  outline: none !important;
-}
-
-/* ─────────────────────────────────────────────────────
-   EFFECT UTILITIES
-   ───────────────────────────────────────────────────── */
-.glow-sm {
-  filter: drop-shadow(0 0 6px currentColor);
-}
-
-/* ─────────────────────────────────────────────────────
-   RESPONSIVE UTILITIES
-   ───────────────────────────────────────────────────── */
+/* Responsive: mobile glass-card padding */
 @media (max-width: 640px) {
   .glass-card {
     padding: var(--space-3);
-  }
-
-  .auto-grid {
-    grid-template-columns: 1fr !important;
   }
 
   .header-tab {
     min-height: 2.75rem;
     padding: var(--space-2) var(--space-2-5);
   }
-
-  .stats-bar {
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
 }
-
-/* Safe area insets for notched phones */
-@supports (padding: env(safe-area-inset-bottom)) {
-  .footer-safe {
-    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
-  }
-
-  .header-safe {
-    padding-top: env(safe-area-inset-top);
-  }
-}
-@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-100% - 1rem)); } }\n.animate-marquee { animation: marquee 30s linear infinite; }

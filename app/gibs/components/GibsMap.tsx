@@ -1,8 +1,7 @@
 ﻿'use client';
 
-import { MapContainer, TileLayer, LayersControl } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useEffect } from 'react';
 import L from 'leaflet';
 
 // Fix for default unconfigured map icons in Leaflet
@@ -42,7 +41,6 @@ const LAYER_CONFIG: Record<string, { format: string; tileMatrix: string; maxZoom
 };
 
 export default function GibsMap({ layer, date }: GibsMapProps) {
-  // Base map - Blue Marble
   const baseMapUrl = 'https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief_Bathymetry/default/2023-01-01/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpeg';
 
   const activeConfig = layer !== 'none' ? LAYER_CONFIG[layer] : null;
@@ -51,9 +49,15 @@ export default function GibsMap({ layer, date }: GibsMapProps) {
     <MapContainer 
       center={[0, 0]} 
       zoom={3} 
+      maxZoom={19}
       style={{ height: '100%', width: '100%', borderRadius: '0.75rem', zIndex: 0 }}
       zoomControl={true}
     >
+      <TileLayer
+        url="https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
+        maxZoom={19}
+      />
       <TileLayer
         url={baseMapUrl}
         attribution="NASA EOSDIS GIBS"

@@ -26,10 +26,6 @@ export interface SpaceNewsArticle extends SpaceNewsBase {
   featured?: boolean;
 }
 
-export type SpaceNewsBlog = SpaceNewsBase;
-
-export type SpaceNewsReport = SpaceNewsBase;
-
 export type DatasetTab = "apod" | "nasa-media" | "news" | "asteroids" | "exoplanets" | "gibs" | "techport";
 
 // NASA Image and Video Library

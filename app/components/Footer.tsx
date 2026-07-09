@@ -1,14 +1,9 @@
 ﻿"use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 export function Footer() {
-  const [year, setYear] = useState<number | null>(null);
-
-  useEffect(() => {
-    const init = () => setYear(new Date().getFullYear()); init();
-  }, []);
+  const year = new Date().getFullYear();
 
   return (
     <footer className="mt-auto">
@@ -48,7 +43,7 @@ export function Footer() {
           </p>
 
           <p className="text-xs text-text-muted/60">
-            &copy; {year || "NASA Data"}
+            &copy; {year}
           </p>
         </div>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { ChevronLeft, ChevronRight, Calendar, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { useApodRange } from "../hooks/useApod";
 import { DataCard } from "../components/ui/DataCard";
 import { Modal } from "../components/ui/Modal";

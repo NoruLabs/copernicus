@@ -1,14 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import type {
-  SpaceNewsArticle,
-  SpaceNewsBlog,
-  SpaceNewsReport,
-} from "../lib/types";
+import type { SpaceNewsArticle, SpaceNewsBase } from "../lib/types";
 
 export interface SpaceNewsResponse {
   articles: SpaceNewsArticle[];
-  blogs: SpaceNewsBlog[];
-  reports: SpaceNewsReport[];
+  blogs: SpaceNewsBase[];
+  reports: SpaceNewsBase[];
 }
 
 export function useSpaceNews() {

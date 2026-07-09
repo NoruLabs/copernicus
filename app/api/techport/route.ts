@@ -2,10 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
   try {
-    // Standard fetch to the search endpoint
-    const response = await fetch("https://techport.nasa.gov/api/projects/search", {
-      next: { revalidate: 3600 },
-    });
+    const response = await fetch("https://techport.nasa.gov/api/projects/search");
     
     if (!response.ok) {
       throw new Error(`Failed to fetch TechPort projects: ${response.statusText}`);
@@ -32,9 +29,7 @@ export async function GET(request: NextRequest) {
       const detailedChunk = await Promise.all(chunk.map(async (p: any) => {
       const id = p.projectId || p.id;
       try {
-        const detailRes = await fetch(`https://techport.nasa.gov/api/projects/${id}`, {
-          next: { revalidate: 3600 },
-        });
+        const detailRes = await fetch(`https://techport.nasa.gov/api/projects/${id}`);
         if (detailRes.ok) {
           const detailData = await detailRes.json();
           const proj = detailData.project || {};

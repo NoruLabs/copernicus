@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
-import { Flame, Cloud, Snowflake, Wind, Map as MapIcon, Calendar } from 'lucide-react';
+import { Map as MapIcon, Calendar } from 'lucide-react';
 import { DataCard } from '../components/ui/DataCard';
 
 const GibsMap = dynamic(() => import('./components/GibsMap'), {
@@ -15,16 +15,17 @@ const GibsMap = dynamic(() => import('./components/GibsMap'), {
 });
 
 const LAYERS = [
-  { id: 'MODIS_Terra_Land_Surface_Temp_Day', name: 'Land Surface Temp', icon: Flame, color: 'text-orange-500' },
-  { id: 'MODIS_Terra_CorrectedReflectance_TrueColor', name: 'True Color (Clouds)', icon: Cloud, color: 'text-blue-200' },
-  { id: 'MODIS_Terra_Sea_Ice', name: 'Sea Ice', icon: Snowflake, color: 'text-cyan-300' },
-  { id: 'MODIS_Terra_Aerosol', name: 'Air Quality (Aerosol)', icon: Wind, color: 'text-zinc-400' },
+  { id: 'MODIS_Terra_Land_Surface_Temp_Day', name: 'Land Surface Temp' },
+  { id: 'MODIS_Terra_CorrectedReflectance_TrueColor', name: 'True Color (Clouds)' },
+  { id: 'MODIS_Terra_Sea_Ice', name: 'Sea Ice' },
+  { id: 'MODIS_Terra_Aerosol', name: 'Air Quality (Aerosol)' },
 ];
 
 export default function GibsClient() {
-  const [activeLayer, setActiveLayer] = useState(LAYERS[0].id);
+  const [activeLayer, setActiveLayer] = useState('none');
   const [date, setDate] = useState(() => {
     const d = new Date();
+    d.setDate(d.getDate() - 2);
     return d.toISOString().split('T')[0];
   });
 
@@ -56,7 +57,6 @@ export default function GibsClient() {
 
       <div className="-mx-3 px-3 sm:mx-0 sm:px-0 flex gap-2 overflow-x-auto pb-3 shrink-0 scrollbar-none mb-1">
         {LAYERS.map((l) => {
-          const Icon = l.icon;
           const isActive = activeLayer === l.id;
           return (
             <button
@@ -68,14 +68,13 @@ export default function GibsClient() {
                   : 'bg-bg-card/50 border-border text-text-secondary hover:bg-bg-card hover:border-border-hover hover:text-text-primary'
               }`}
             >
-              <Icon size={16} className={isActive ? 'text-bg-primary' : l.color} />
               {l.name}
             </button>
           );
         })}
         <button
           onClick={() => setActiveLayer('none')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all shrink-0 border ${
+          className={`flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all shrink-0 border ${
             activeLayer === 'none'
                ? 'bg-bg-card border-text-primary/40 text-text-primary shadow-sm'
                : 'bg-bg-card/50 border-border text-text-secondary hover:bg-bg-card hover:border-border-hover hover:text-text-primary'
