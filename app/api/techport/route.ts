@@ -1,71 +1,52 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
-    const response = await fetch("https://techport.nasa.gov/api/projects/search");
-    
-    if (!response.ok) {
-      throw new Error(`Failed to fetch TechPort projects: ${response.statusText}`);
+    // Try POST search — returns 50 most recently updated projects, sorted server-side
+    try {
+      const res = await fetch("https://techport.nasa.gov/api/projects/search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ limit: 50, sortString: "lastUpdated desc" }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const projects = data.results ?? data;
+        if (Array.isArray(projects)) {
+          return NextResponse.json(projects.slice(0, 30));
+        }
+      }
+    } catch {
+      // POST failed, fall through
     }
-    
-    const data = await response.json();
-    const projects = data.results || [];
-    
-    // Sort by end date descending so recent/current projects are shown first
+
+    // Fallback: get IDs of projects updated this year (compact response)
+    const idRes = await fetch("https://techport.nasa.gov/api/projects?updatedSince=2026-01-01");
+    if (!idRes.ok) throw new Error(`Failed to get project IDs: ${idRes.statusText}`);
+    const ids: number[] = await idRes.json();
+
+    // Take the last 20 (highest IDs tend to be newer projects)
+    const recentIds = ids.slice(-20).reverse();
+
+    const projects = (await Promise.allSettled(
+      recentIds.map(async (id) => {
+        const detailRes = await fetch(`https://techport.nasa.gov/api/projects/${id}`);
+        if (!detailRes.ok) return null;
+        const data = await detailRes.json();
+        return data.project ?? null;
+      })
+    ))
+      .filter((r) => r.status === "fulfilled" && r.value)
+      .map((r) => (r as PromiseFulfilledResult<any>).value);
+
+    // Sort by lastUpdated descending
     projects.sort((a: any, b: any) => {
-      const dateA = new Date(a.endDate || "2000-01-01").getTime();
-      const dateB = new Date(b.endDate || "2000-01-01").getTime();
-      return dateB - dateA;
+      const da = new Date(a.lastUpdated || "2000-01-01").getTime();
+      const db = new Date(b.lastUpdated || "2000-01-01").getTime();
+      return db - da;
     });
 
-    // Return the top 150 results after sorting
-    const topProjects = projects.slice(0, 150);
-    
-    // Fetch detailed info for these top projects in chunks to avoid overwhelming the API
-    const detailedProjects = [];
-    const chunkSize = 25;
-    for (let i = 0; i < topProjects.length; i += chunkSize) {
-      const chunk = topProjects.slice(i, i + chunkSize);
-      const detailedChunk = await Promise.all(chunk.map(async (p: any) => {
-      const id = p.projectId || p.id;
-      try {
-        const detailRes = await fetch(`https://techport.nasa.gov/api/projects/${id}`);
-        if (detailRes.ok) {
-          const detailData = await detailRes.json();
-          const proj = detailData.project || {};
-          
-          // Image Extraction
-          const imageItem = proj.libraryItems?.find((i: any) => i.libraryItemType === 'Image' || i.file?.fileExtension?.match(/jpg|jpeg|png/i));
-          let imageUrl = null;
-          if (imageItem && imageItem.file?.fileId) {
-            imageUrl = `https://techport.nasa.gov/api/file/${imageItem.file.fileId}`;
-          }
-
-          // PI Contacts
-          const principalInvestigators = proj.projectContacts?.filter((c: any) => c.projectContactRole === 'Principal_Investigator' || c.projectContactRolePretty === 'Principal Investigator').map((c: any) => c.fullName) || [];
-
-          return {
-            ...p,
-            imageUrl,
-            principalInvestigators,
-            benefits: proj.benefits || '',
-            trlBegin: proj.trlBegin || p.trlBegin,
-            trlCurrent: proj.trlCurrent,
-            trlEnd: proj.trlEnd || p.trlEnd,
-            leadOrganization: proj.leadOrganization || p.leadOrganization,
-            statusDescription: proj.statusDescription || p.statusDescription || p.status,
-            description: proj.description || p.description,
-          };
-        }
-      } catch (err) {
-        console.error(`Failed to fetch detail for project ${id}`, err);
-      }
-      return p;
-    }));
-      detailedProjects.push(...detailedChunk);
-    }
-
-    return NextResponse.json(detailedProjects);
+    return NextResponse.json(projects);
   } catch (error) {
     console.error("TechPort fetch error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

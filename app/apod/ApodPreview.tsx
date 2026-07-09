@@ -94,7 +94,7 @@ export function ApodPreview() {
             {data.title}
           </h3>
           <p className="text-xs text-gray-300 mb-3 drop-shadow-md">
-            {data.date} {data.copyright ? `ï¿½ ï¿½ ${data.copyright}` : ''}
+            {data.date} {data.copyright && `\u00a9 ${data.copyright}`}
           </p>
           <p className="text-sm text-gray-300 line-clamp-2 md:line-clamp-3 leading-relaxed mb-4 drop-shadow-md">
             {data.explanation}
