@@ -1,345 +1,246 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-16T22:00:00.000Z",
-  "title": "Design System: Noru Search",
+  "generatedAt": "2026-08-16T22:41:00.000Z",
+  "title": "Design System: Copernicus",
   "extensions": {
     "colorMeta": {
-      "canvas": {
+      "paper": {
         "role": "neutral",
-        "displayName": "Warm Canvas",
-        "canonical": "#f5f5f2",
-        "tonalRamp": [
-          "#2a2a27",
-          "#4a4a45",
-          "#6e6e67",
-          "#94948b",
-          "#b8b8af",
-          "#d4d4cc",
-          "#e8e8e2",
-          "#f5f5f2"
-        ]
-      },
-      "surface": {
-        "role": "neutral",
-        "displayName": "Paper Surface",
-        "canonical": "#ffffff",
-        "tonalRamp": [
-          "#1a1a1a",
-          "#404040",
-          "#666666",
-          "#8c8c8c",
-          "#b3b3b3",
-          "#d9d9d9",
-          "#f0f0f0",
-          "#ffffff"
-        ]
+        "displayName": "Almanac Paper",
+        "canonical": "#f7f5ee",
+        "tonalRamp": ["#282721", "#49473d", "#6d6a5d", "#918e80", "#b4b1a5", "#d3d0c6", "#e8e5dc", "#f7f5ee"]
       },
       "ink": {
         "role": "neutral",
-        "displayName": "Register Ink",
-        "canonical": "#171916",
-        "tonalRamp": [
-          "#171916",
-          "#2e322c",
-          "#464b43",
-          "#5f655c",
-          "#7a8076",
-          "#979c93",
-          "#b6bab2",
-          "#d7dad3"
-        ]
+        "displayName": "Ledger Ink",
+        "canonical": "#20231f",
+        "tonalRamp": ["#20231f", "#353a34", "#4d534b", "#666d64", "#81887e", "#9fa59c", "#bec2bb", "#e0e2dd"]
       },
       "muted": {
         "role": "neutral",
-        "displayName": "Muted Caption",
-        "canonical": "#62675f",
-        "tonalRamp": [
-          "#1c1e1b",
-          "#333631",
-          "#4a4e47",
-          "#62675f",
-          "#7c8279",
-          "#989e94",
-          "#b6bbb2",
-          "#d5d8d1"
-        ]
+        "displayName": "Muted Notation",
+        "canonical": "#5a6158",
+        "tonalRamp": ["#1b1e1a", "#30352f", "#454b44", "#5a6158", "#737a71", "#90968d", "#afb4ac", "#d0d3cd"]
       },
       "rule": {
         "role": "neutral",
-        "displayName": "Hairline Rule",
-        "canonical": "#d9dbd5",
-        "tonalRamp": [
-          "#3a3c37",
-          "#5a5d55",
-          "#7a7e74",
-          "#9a9e93",
-          "#b8bcb2",
-          "#d9dbd5",
-          "#e8eae4",
-          "#f4f5f1"
-        ]
+        "displayName": "Engraved Rule",
+        "canonical": "#c8ccc2",
+        "tonalRamp": ["#30332e", "#4e534b", "#6d7369", "#8d9388", "#abb0a6", "#c8ccc2", "#dde0d8", "#f0f1ec"]
       },
-      "code-ink": {
-        "role": "neutral",
-        "displayName": "Code Ink",
-        "canonical": "#3f443d",
-        "tonalRamp": [
-          "#1a1c19",
-          "#2c302a",
-          "#3f443d",
-          "#565c53",
-          "#6f766b",
-          "#8b9186",
-          "#a9aea4",
-          "#c9cdc4"
-        ]
-      },
-      "success": {
+      "measure": {
         "role": "primary",
-        "displayName": "Signal Green",
-        "canonical": "#137333",
-        "tonalRamp": [
-          "#062411",
-          "#0a3d1c",
-          "#0f5628",
-          "#137333",
-          "#1a9a45",
-          "#3db86a",
-          "#7dd49a",
-          "#c6edd4"
-        ]
+        "displayName": "Measure Green",
+        "canonical": "#35564a",
+        "tonalRamp": ["#14201c", "#20342c", "#2a453b", "#35564a", "#477263", "#668e7e", "#96b1a4", "#d5e0da"]
       },
-      "warning": {
-        "role": "secondary",
-        "displayName": "Degraded Warning",
-        "canonical": "#a33a2b",
-        "tonalRamp": [
-          "#3a140f",
-          "#5c2118",
-          "#7f2d21",
-          "#a33a2b",
-          "#c45443",
-          "#d87d6f",
-          "#e8aea5",
-          "#f5d9d4"
-        ]
+      "surface": {
+        "role": "neutral",
+        "displayName": "Plate White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#1a1a1a", "#404040", "#666666", "#8c8c8c", "#b3b3b3", "#d9d9d9", "#f0f0f0", "#ffffff"]
       },
       "focus": {
         "role": "tertiary",
         "displayName": "Focus Blue",
         "canonical": "#2458c6",
-        "tonalRamp": [
-          "#0c1e4a",
-          "#14327a",
-          "#1b45a3",
-          "#2458c6",
-          "#3d74dd",
-          "#6b98e8",
-          "#a3c0f2",
-          "#d6e3fa"
-        ]
+        "tonalRamp": ["#0c1e4a", "#14327a", "#1b45a3", "#2458c6", "#3d74dd", "#6b98e8", "#a3c0f2", "#d6e3fa"]
       }
     },
     "typographyMeta": {
       "display": {
-        "displayName": "Display",
-        "purpose": "Page title only — NASA endpoint status h1."
+        "displayName": "Masthead Display",
+        "purpose": "The Copernicus publication mark only."
+      },
+      "headline": {
+        "displayName": "Plate Headline",
+        "purpose": "The lead astronomical plate title."
       },
       "title": {
-        "displayName": "Title",
-        "purpose": "Endpoint names and compact section titles."
+        "displayName": "Ledger Title",
+        "purpose": "Ephemeris, section headings, and record names."
       },
       "body": {
-        "displayName": "Body",
-        "purpose": "Intro and audit-note supporting prose."
+        "displayName": "Reading Body",
+        "purpose": "Decks, explanations, captions, metadata, and colophon."
       },
       "label": {
-        "displayName": "Label",
-        "purpose": "Uppercase measure dt labels."
-      },
-      "brand": {
-        "displayName": "Brand",
-        "purpose": "NORU SEARCH product mark link."
-      },
-      "mono": {
-        "displayName": "Mono",
-        "purpose": "Endpoint display URLs only."
+        "displayName": "Ledger Label",
+        "purpose": "Compact source names and measurement labels."
       }
     },
     "shadows": [],
     "motion": [],
     "breakpoints": [
       {
-        "name": "tablet",
+        "name": "folio-stack",
         "value": "56rem",
-        "purpose": "Intro stacks; endpoint row becomes two columns; summary width capped."
+        "purpose": "Lead folio and lower edition grids become one reading column."
       },
       {
         "name": "mobile",
         "value": "37rem",
-        "purpose": "Single-column register; tighter shell inset; stacked section heading and audit note."
+        "purpose": "Tighter edition inset, stacked masthead, and single-column discovery records."
       }
     ],
     "accessibility": [
       {
         "name": "focus-visible",
-        "value": "outline: 2px solid #2458c6; outline-offset: 4px",
-        "purpose": "Keyboard focus ring on interactive elements."
+        "value": "outline: 2px solid #2458c6; outline-offset: 3px",
+        "purpose": "Keyboard focus on links and buttons."
       },
       {
         "name": "skip-to-content",
-        "value": "off-canvas until :focus; ink fill / surface text",
-        "purpose": "Bypass link to #main-content."
-      },
-      {
-        "name": "status-dot",
-        "value": "aria-hidden=\"true\"",
-        "purpose": "Status color is decorative; live state also stated in text (Online / Degraded)."
+        "value": "off-canvas until focus; immediate reveal",
+        "purpose": "Bypasses the edition masthead and begins at main content."
       },
       {
         "name": "selection",
-        "value": "color: #ffffff; background: #171916",
-        "purpose": "Ink-on-surface selection inversion."
+        "value": "color: #f7f5ee; background: #20231f",
+        "purpose": "Printed ink inversion for selected text."
       }
-    ],
-    "productContext": {
-      "note": "Audit provenance is product content, not a visual token.",
-      "recorded": "2026-08-16",
-      "requestsPerSource": 20,
-      "method": "uncached sequential requests",
-      "gibs": "n=40 across two tile classes (base and imagery)"
-    }
+    ]
   },
   "components": [
     {
-      "name": "Brand Link",
+      "name": "Masthead",
       "kind": "nav",
-      "refersTo": "brand-link",
-      "description": "Uppercase muted product mark linking home.",
-      "html": "<a class=\"ds-brand\" href=\"/\" aria-label=\"Noru Search home\">Noru Search</a>",
-      "css": ".ds-brand { display: inline-block; margin-bottom: 3rem; color: var(--muted, #62675f); font-family: \"Segoe UI\", -apple-system, BlinkMacSystemFont, sans-serif; font-size: 0.8125rem; font-weight: 650; letter-spacing: 0.08em; text-decoration: none; text-transform: uppercase; } .ds-brand:focus-visible { outline: 2px solid var(--focus, #2458c6); outline-offset: 4px; }"
+      "refersTo": "masthead",
+      "description": "Dated publication mark and concise edition deck above an engraved rule.",
+      "html": "<header class=\"ds-masthead\"><div class=\"ds-masthead-top\"><a href=\"/\" class=\"ds-brand\">Copernicus</a><p class=\"ds-dateline\">Sunday, August 16, 2026</p></div><p class=\"ds-deck\">Today's NASA edition. Imagery and measurements from verified feeds, printed as one almanac.</p></header>",
+      "css": ".ds-masthead { display: grid; gap: .75rem; padding-bottom: 1rem; border-bottom: 2px solid var(--ink, #20231f); color: var(--ink, #20231f); } .ds-masthead-top { display: flex; gap: 1rem; align-items: baseline; justify-content: space-between; } .ds-brand { color: inherit; font-family: \"Source Serif 4\", Georgia, serif; font-size: clamp(2.4rem, 7vw, 4.5rem); font-weight: 700; letter-spacing: -.03em; line-height: .92; text-decoration: none; } .ds-dateline { margin: 0; color: var(--muted, #5a6158); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .875rem; font-variant-numeric: tabular-nums; text-align: right; } .ds-deck { max-width: 58ch; margin: 0; color: var(--muted, #5a6158); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: 1rem; line-height: 1.55; } .ds-brand:focus-visible { outline: 2px solid var(--focus, #2458c6); outline-offset: 3px; }"
+    },
+    {
+      "name": "Lead Plate",
+      "kind": "card",
+      "refersTo": "plate",
+      "description": "Bordered lead image with editorial title, provenance, and explanation.",
+      "html": "<article class=\"ds-plate\"><div class=\"ds-plate-frame\"><div class=\"ds-plate-image\" role=\"img\" aria-label=\"Astronomy picture plate\"></div></div><h1>Milky Way over Yellowstone</h1><p class=\"ds-note\">NASA Astronomy Picture of the Day · 2026-08-16 · Credit: Dave Lane</p><p class=\"ds-explanation\">The day's verified image is presented as the edition's primary visual evidence.</p></article>",
+      "css": ".ds-plate { display: grid; gap: .85rem; color: var(--ink, #20231f); } .ds-plate-frame { overflow: hidden; border: 1px solid var(--ink, #20231f); background: var(--surface, #fff); } .ds-plate-image { width: 100%; aspect-ratio: 16 / 10; background: linear-gradient(145deg, #20231f, #35564a); } .ds-plate h1 { margin: 0; font-family: \"Source Serif 4\", Georgia, serif; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.15; } .ds-note, .ds-explanation { margin: 0; color: var(--muted, #5a6158); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .95rem; line-height: 1.6; }"
+    },
+    {
+      "name": "Ephemeris Ledger",
+      "kind": "custom",
+      "refersTo": "ledger-row",
+      "description": "Daily measurements in tabular ruled rows with attached plain-language call-outs.",
+      "html": "<aside class=\"ds-ephemeris\"><h2>Ephemeris</h2><table class=\"ds-ledger\"><tbody><tr><th scope=\"row\">Near-Earth objects</th><td>1<span>Objects with a close approach dated 2026-08-16.</span></td></tr><tr><th scope=\"row\">Closest approach</th><td>48 million km<span>417874 (2007 NC5) at 40.0 km/s.</span></td></tr><tr><th scope=\"row\">Recent exoplanets</th><td>6<span>Newest confirmed planets pulled for this edition.</span></td></tr></tbody></table></aside>",
+      "css": ".ds-ephemeris { border-top: 1px solid var(--ink, #20231f); color: var(--ink, #20231f); } .ds-ephemeris h2 { margin: 0 0 .85rem; font-family: \"Source Serif 4\", Georgia, serif; font-size: 1.15rem; font-weight: 700; letter-spacing: -.01em; } .ds-ledger { width: 100%; border-collapse: collapse; font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; } .ds-ledger th, .ds-ledger td { padding: .7rem 0; border-bottom: 1px solid var(--rule, #c8ccc2); text-align: left; vertical-align: top; } .ds-ledger th { width: 42%; color: var(--muted, #5a6158); font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; } .ds-ledger td { color: var(--measure, #35564a); font-size: .95rem; font-variant-numeric: tabular-nums; font-weight: 600; } .ds-ledger td span { display: block; margin-top: .2rem; color: var(--muted, #5a6158); font-size: .8rem; font-weight: 400; line-height: 1.45; }"
+    },
+    {
+      "name": "Section Heading",
+      "kind": "custom",
+      "refersTo": "section-heading",
+      "description": "Serif section title and compact source attribution over an ink rule.",
+      "html": "<div class=\"ds-section-head\"><h2>Recent discoveries</h2><p>NASA Exoplanet Archive</p></div>",
+      "css": ".ds-section-head { display: flex; gap: 1rem; align-items: baseline; justify-content: space-between; margin-bottom: .85rem; padding-bottom: .55rem; border-bottom: 1px solid var(--ink, #20231f); } .ds-section-head h2 { margin: 0; color: var(--ink, #20231f); font-family: \"Source Serif 4\", Georgia, serif; font-size: 1.15rem; font-weight: 700; letter-spacing: -.01em; } .ds-section-head p { margin: 0; color: var(--muted, #5a6158); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .75rem; font-variant-numeric: tabular-nums; letter-spacing: .03em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Discovery Ledger Row",
+      "kind": "custom",
+      "refersTo": "ledger-row",
+      "description": "Exoplanet discovery record with source metadata and aligned measured figure.",
+      "html": "<article class=\"ds-discovery\"><div><h3>XO-2 S d</h3><p>Host XO-2 S · Radial Velocity · 2025</p></div><strong>13.00 R⊕</strong></article>",
+      "css": ".ds-discovery { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid var(--rule, #c8ccc2); } .ds-discovery h3 { margin: 0 0 .25rem; color: var(--ink, #20231f); font-family: \"Source Serif 4\", Georgia, serif; font-size: 1rem; font-weight: 700; } .ds-discovery p { margin: 0; color: var(--muted, #5a6158); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .82rem; line-height: 1.45; } .ds-discovery strong { color: var(--measure, #35564a); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .9rem; font-variant-numeric: tabular-nums; font-weight: 700; text-align: right; white-space: nowrap; }"
+    },
+    {
+      "name": "Image Brief Row",
+      "kind": "custom",
+      "refersTo": "ledger-row",
+      "description": "Square NASA thumbnail paired with a compact editorial title and date.",
+      "html": "<article class=\"ds-image-row\"><div class=\"ds-thumb\" role=\"img\" aria-label=\"NASA image thumbnail\"></div><div><h3>The Earth &amp; Moon</h3><p>Aug 16, 2026</p></div></article>",
+      "css": ".ds-image-row { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 1rem; align-items: center; padding: .85rem 0; border-bottom: 1px solid var(--rule, #c8ccc2); } .ds-thumb { width: 4.5rem; height: 4.5rem; border: 1px solid var(--rule, #c8ccc2); background: var(--surface, #fff); } .ds-image-row h3 { margin: 0 0 .25rem; color: var(--ink, #20231f); font-family: \"Source Serif 4\", Georgia, serif; font-size: 1rem; font-weight: 700; } .ds-image-row p { margin: 0; color: var(--muted, #5a6158); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .82rem; line-height: 1.45; }"
+    },
+    {
+      "name": "Earth Observation Plate",
+      "kind": "card",
+      "refersTo": "plate",
+      "description": "Square Earth imagery plate with a compact date and source caption.",
+      "html": "<figure class=\"ds-earth\"><div class=\"ds-earth-image\" role=\"img\" aria-label=\"MODIS Terra true color\"></div><figcaption>MODIS Terra true color · 2026-08-14</figcaption></figure>",
+      "css": ".ds-earth { display: grid; gap: .75rem; margin: 0; } .ds-earth-image { width: 100%; aspect-ratio: 1; border: 1px solid var(--ink, #20231f); background: var(--surface, #fff); } .ds-earth figcaption { color: var(--muted, #5a6158); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .82rem; line-height: 1.45; }"
     },
     {
       "name": "Skip to Content",
       "kind": "nav",
       "refersTo": "skip-link",
-      "description": "Off-canvas accessibility link that appears on focus.",
+      "description": "Square ink accessibility link revealed immediately on keyboard focus.",
       "html": "<a class=\"ds-skip\" href=\"#main-content\">Skip to content</a>",
-      "css": ".ds-skip { position: absolute; top: 0; left: -100%; z-index: 10; padding: 0.75rem 1rem; color: var(--surface, #ffffff); background: var(--ink, #171916); font-family: \"Segoe UI\", -apple-system, BlinkMacSystemFont, sans-serif; text-decoration: none; } .ds-skip:focus { left: 0; } .ds-skip:focus-visible { outline: 2px solid var(--focus, #2458c6); outline-offset: 4px; }"
-    },
-    {
-      "name": "Summary Measures",
-      "kind": "custom",
-      "refersTo": "summary-measure",
-      "description": "Two-cell audit summary with rule dividers and tabular values.",
-      "html": "<dl class=\"ds-summary\" aria-label=\"Current endpoint summary\"><div><dt>Live now</dt><dd>5/5</dd></div><div><dt>Audit threshold</dt><dd>95%</dd></div></dl>",
-      "css": ".ds-summary { display: grid; grid-template-columns: repeat(2, minmax(7rem, auto)); margin: 0; border-top: 1px solid var(--rule, #d9dbd5); font-family: \"Segoe UI\", -apple-system, BlinkMacSystemFont, sans-serif; } .ds-summary > div { padding: 1rem 0 0 1.25rem; border-left: 1px solid var(--rule, #d9dbd5); } .ds-summary dt { margin: 0 0 0.35rem; color: var(--muted, #62675f); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; } .ds-summary dd { margin: 0; color: var(--ink, #171916); font-size: clamp(1.6rem, 3vw, 2.25rem); font-variant-numeric: tabular-nums; font-weight: 600; }"
-    },
-    {
-      "name": "Status Dot Online",
-      "kind": "custom",
-      "refersTo": "status-dot-online",
-      "description": "0.55rem success circle for live-online sources.",
-      "html": "<span class=\"ds-status-dot ds-status-online\" aria-hidden=\"true\"></span>",
-      "css": ".ds-status-dot { display: inline-block; width: 0.55rem; height: 0.55rem; flex: 0 0 auto; border-radius: 50%; background: var(--warning, #a33a2b); } .ds-status-online { background: var(--success, #137333); }"
-    },
-    {
-      "name": "Status Dot Degraded",
-      "kind": "custom",
-      "refersTo": "status-dot-degraded",
-      "description": "0.55rem warning circle for degraded live state.",
-      "html": "<span class=\"ds-status-dot ds-status-degraded\" aria-hidden=\"true\"></span>",
-      "css": ".ds-status-dot { display: inline-block; width: 0.55rem; height: 0.55rem; flex: 0 0 auto; border-radius: 50%; background: var(--warning, #a33a2b); } .ds-status-degraded { background: var(--warning, #a33a2b); }"
-    },
-    {
-      "name": "Endpoint Row",
-      "kind": "custom",
-      "refersTo": "endpoint-row",
-      "description": "Flat register row: status, name, mono URL, measures, muted detail.",
-      "html": "<article class=\"ds-endpoint-row\"><div class=\"ds-endpoint-name\"><span class=\"ds-status-dot ds-status-online\" aria-hidden=\"true\"></span><div><h3>Astronomy Picture of the Day</h3><p>NASA Open APIs</p></div></div><code>api.nasa.gov/planetary/apod</code><dl class=\"ds-endpoint-measures\"><div><dt>Recorded audit</dt><dd>100% (20/20)</dd></div><div><dt>Live response</dt><dd>Online · 3568 ms</dd></div></dl><p class=\"ds-endpoint-detail\">Valid entry for 2026-08-16</p></article>",
-      "css": ".ds-endpoint-row { display: grid; grid-template-columns: minmax(13rem, 1.25fr) minmax(14rem, 1.1fr) minmax(15rem, 1fr); gap: 1.5rem; padding: 1.4rem 0; border-bottom: 1px solid var(--rule, #d9dbd5); color: var(--ink, #171916); font-family: \"Segoe UI\", -apple-system, BlinkMacSystemFont, sans-serif; } .ds-endpoint-name { display: flex; gap: 0.75rem; align-items: flex-start; } .ds-endpoint-name h3 { margin: 0 0 0.3rem; font-size: 0.9375rem; font-weight: 650; line-height: 1.35; } .ds-endpoint-name p, .ds-endpoint-detail { margin: 0; color: var(--muted, #62675f); font-size: 0.8125rem; line-height: 1.5; } .ds-status-dot { width: 0.55rem; height: 0.55rem; margin-top: 0.3rem; flex: 0 0 auto; border-radius: 50%; background: var(--warning, #a33a2b); } .ds-status-online { background: var(--success, #137333); } .ds-endpoint-row code { overflow-wrap: anywhere; color: var(--code-ink, #3f443d); font-family: \"Cascadia Code\", \"SFMono-Regular\", Consolas, monospace; font-size: 0.75rem; line-height: 1.55; } .ds-endpoint-measures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 0; } .ds-endpoint-measures dt { margin: 0 0 0.35rem; color: var(--muted, #62675f); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; } .ds-endpoint-measures dd { margin: 0; font-size: 0.8125rem; font-variant-numeric: tabular-nums; font-weight: 600; line-height: 1.45; } .ds-endpoint-detail { grid-column: 3; }"
-    },
-    {
-      "name": "Section Heading",
-      "kind": "custom",
-      "description": "Retained-sources band title with muted tabular timestamp.",
-      "html": "<div class=\"ds-section-heading\"><h2>Retained sources</h2><p>Live check Aug 16, 2026, 10:08:13 PM UTC</p></div>",
-      "css": ".ds-section-heading { display: flex; gap: 2rem; align-items: baseline; justify-content: space-between; margin-bottom: 1.25rem; font-family: \"Segoe UI\", -apple-system, BlinkMacSystemFont, sans-serif; } .ds-section-heading h2 { margin: 0; color: var(--ink, #171916); font-size: 1rem; font-weight: 650; } .ds-section-heading p { margin: 0; color: var(--muted, #62675f); font-size: 0.8125rem; font-variant-numeric: tabular-nums; }"
-    },
-    {
-      "name": "Audit Note",
-      "kind": "custom",
-      "description": "Removed-sources aside under an ink rule; provenance as content.",
-      "html": "<aside class=\"ds-audit-note\" aria-labelledby=\"removed-heading\"><h2 id=\"removed-heading\">Removed after audit</h2><p>Results came from 20 sequential, uncached requests per source on August 16, 2026; GIBS was checked 20 times for each of its base and imagery tiles.</p></aside>",
-      "css": ".ds-audit-note { display: grid; grid-template-columns: minmax(10rem, 0.45fr) minmax(0, 1fr); gap: 2rem; margin-top: clamp(3.5rem, 8vw, 7rem); padding-top: 1.5rem; border-top: 1px solid var(--ink, #171916); font-family: \"Segoe UI\", -apple-system, BlinkMacSystemFont, sans-serif; } .ds-audit-note h2 { margin: 0; color: var(--ink, #171916); font-size: 1rem; font-weight: 650; } .ds-audit-note p { margin: 0; max-width: 65ch; color: var(--muted, #62675f); font-size: 0.9375rem; line-height: 1.65; }"
+      "css": ".ds-skip { display: inline-block; padding: .75rem 1rem; color: var(--paper, #f7f5ee); background: var(--ink, #20231f); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .95rem; text-decoration: none; } .ds-skip:hover { color: var(--paper, #f7f5ee); background: var(--ink, #20231f); } .ds-skip:focus-visible { outline: 2px solid var(--focus, #2458c6); outline-offset: 3px; } .ds-skip:active { color: var(--paper, #f7f5ee); background: var(--ink, #20231f); }"
     }
   ],
   "narrative": {
-    "northStar": "The Endpoint Register",
-    "overview": "Noru Search is a white-field technical register, not a content portal. The page itself is the reliability check: product name, two audit measures, retained sources, live validity, and removals. Atmosphere comes from off-white canvas, ink typography, and hairline rules — never from cards, shadows, gradients, or motion.\n\nDensity is sparse and inspectable. Every row is a source record; green and warning marks are the only chromatic signals; monospace is reserved for endpoint URLs. The brand commitment is highly minimal UI with no animations.\n\nAudit provenance (recorded August 16, 2026; n=20 uncached sequential requests per source; GIBS n=40 across two tile classes) is product content that explains why sources appear or disappear. It is not a visual token and must not be encoded as color, type, or spacing.",
+    "northStar": "The Ephemeris Ledger",
+    "overview": "Copernicus is a daily astronomical almanac: evidence is printed, measured, ruled, and dated rather than wrapped in application chrome. Warm paper, near-black ink, restrained green measurements, serif authority, and compact sans-serif notation make the edition feel archival without becoming nostalgic theater.\n\nThe composition gives imagery and measurements equal authority. A masthead establishes the issue, the lead plate supplies the day’s visual evidence, and ephemeris and ledger patterns turn live NASA fields into readable records. The interface is flat, square, and still; interest comes from real imagery, typographic contrast, and engraved rules rather than decoration or motion.",
     "keyCharacteristics": [
-      "Off-white canvas with white surfaces and ink/muted hierarchy",
-      "Flat hairline rules define structure; no cards or shadows",
-      "System Segoe UI stack; monospace only for code/URLs",
-      "Status communicated by 0.55rem dots (success green / warning red-brown)",
-      "Zero motion; focus rings and skip link are the accessibility grammar"
+      "Warm almanac paper with ink, muted notation, and pale rule hierarchy",
+      "Source Serif 4 for masthead and editorial titles; Source Sans 3 for reading and measurement",
+      "Square image plates bounded by fine ink strokes",
+      "Tabular ledger rows with deep green measure values and plain-language call-outs",
+      "Engraved horizontal rules organize the edition without cards or shadows",
+      "No animation, decorative dashboard chrome, kickers, or eyebrows"
     ],
     "rules": [
       {
-        "name": "The Signal Scarcity Rule",
-        "body": "Chromatic color appears only as status dots or focus outline. Do not tint headings, rows, or backgrounds with success/warning/focus.",
+        "name": "The Measure Ink Rule",
+        "body": "Green belongs to measured evidence. Never spread it into broad fills, headings, badges, or ornamental accents.",
         "section": "colors"
       },
       {
-        "name": "The Ink Rule Rule",
-        "body": "Section breaks that start major blocks (intro bottom, endpoint list top, audit-note top) use ink (1px solid). Interior separators use rule.",
+        "name": "The Two-Rule Rule",
+        "body": "Major editorial divisions use ink; repeated interior records use the paler engraved rule.",
         "section": "colors"
       },
       {
-        "name": "The Mono Enclosure Rule",
-        "body": "Monospace is exclusive to endpoint URLs. Never mono the brand, headings, or measure labels.",
+        "name": "The Serif Authority Rule",
+        "body": "Serif type names the publication, plates, sections, and records; sans serif carries explanation, provenance, and measurement.",
         "section": "typography"
       },
       {
-        "name": "The Tabular Measure Rule",
-        "body": "Counts, latencies, percentages, and timestamps use font-variant-numeric: tabular-nums.",
+        "name": "The Tabular Evidence Rule",
+        "body": "Dates and quantitative figures use tabular numerals so ledger columns remain stable.",
         "section": "typography"
       },
       {
-        "name": "The Register First Rule",
-        "body": "First viewport is brand, one headline, one supporting sentence, two measures, then the source list — not a dashboard of widgets.",
+        "name": "The No Eyebrow Rule",
+        "body": "Do not add marketing kickers or decorative eyebrows above established headings. Provenance belongs in captions, datelines, or source lines.",
+        "section": "typography"
+      },
+      {
+        "name": "The Plate-and-Ledger Rule",
+        "body": "On wide screens, the lead image and ephemeris share the folio; on narrow screens, preserve their order and stack them without changing their visual language.",
         "section": "layout"
       },
       {
-        "name": "The Flat Register Rule",
-        "body": "Structure is drawn with 1px borders. Do not introduce cards, elevation, or hover lift.",
+        "name": "The Printed Plane Rule",
+        "body": "Every element rests on the paper. Use borders and spacing for structure; never simulate floating interface layers.",
         "section": "elevation"
-      },
-      {
-        "name": "The Dot Exception Rule",
-        "body": "The only round geometry is the live-status marker. Everything else is orthogonal.",
-        "section": "shapes"
       },
       {
         "name": "The No Motion Rule",
-        "body": "Brand commitment: the interface contains no animations.",
+        "body": "The edition contains no animation or transitions. State changes, including skip-link reveal, are immediate.",
         "section": "elevation"
+      },
+      {
+        "name": "The Engraved Edge Rule",
+        "body": "Use crisp rectangular frames and horizontal rules. Do not introduce pills, rounded cards, circles, or ornamental containers.",
+        "section": "shapes"
       }
     ],
     "dos": [
-      "Do keep the off-white canvas (#f5f5f2) and ink/muted/rule hierarchy as the default field.",
-      "Do separate major bands with ink rules and rows with rule hairlines.",
-      "Do use status dots (0.55rem) for live state — success online, warning degraded.",
-      "Do reserve monospace for endpoint URLs and tabular nums for measures.",
-      "Do preserve focus-visible rings (2px / #2458c6 / 4px offset) and the skip link.",
-      "Do treat audit methodology text as content (August 16, 2026; n=20; GIBS n=40), not as design tokens."
+      "Do use Almanac Paper as the continuous field, with Ledger Ink and Engraved Rule defining hierarchy.",
+      "Do pair Source Serif 4 editorial authority with Source Sans 3 reading clarity.",
+      "Do reserve Measure Green for numerical evidence and tabular figures.",
+      "Do treat NASA imagery as a bordered plate with source, date, and credit close by.",
+      "Do keep plain-language call-outs attached to every ephemeris figure.",
+      "Do preserve the 68rem edition measure and stack folio columns below 56rem.",
+      "Do preserve the blue keyboard focus ring and immediate skip-link behavior."
     ],
     "donts": [
-      "Don't add cards, shadows, gradients, glow, or rounded panels.",
-      "Don't introduce animation, transitions, or motion of any kind.",
-      "Don't use Inter/Roboto/custom display pairings; stay on the Segoe UI system stack.",
-      "Don't spread success/warning/focus into fills, badges, or decorative accents.",
-      "Don't turn the page into a browsing portal — the register is the product."
+      "Don't add cards, shadows, gradients, glow, glass, or rounded containers.",
+      "Don't animate or transition any interface element.",
+      "Don't add kickers, eyebrows, slogans, promotional copy, or dashboard labels.",
+      "Don't use Measure Green as decoration or a broad background.",
+      "Don't detach provenance from the image or measurement it qualifies.",
+      "Don't turn the edition into a landing page, dashboard, endpoint register, or app shell."
     ]
   }
 }

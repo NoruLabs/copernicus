@@ -1,254 +1,233 @@
 ---
-name: Noru Search
-description: Minimal NASA endpoint reliability register — white field, ink type, green status marks, rules instead of cards.
+name: Copernicus
+description: A daily NASA almanac set as an engraved ephemeris ledger.
 colors:
-  canvas: "#f5f5f2"
+  paper: "#f7f5ee"
+  ink: "#20231f"
+  muted: "#5a6158"
+  rule: "#c8ccc2"
+  measure: "#35564a"
   surface: "#ffffff"
-  ink: "#171916"
-  muted: "#62675f"
-  rule: "#d9dbd5"
-  code-ink: "#3f443d"
-  success: "#137333"
-  warning: "#a33a2b"
   focus: "#2458c6"
 typography:
   display:
-    fontFamily: "Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif"
-    fontSize: "clamp(2.6rem, 7vw, 5.5rem)"
-    fontWeight: 620
-    lineHeight: 0.95
-    letterSpacing: "-0.035em"
+    fontFamily: "Source Serif 4, Georgia, serif"
+    fontSize: "clamp(2.4rem, 7vw, 4.5rem)"
+    fontWeight: 700
+    lineHeight: 0.92
+    letterSpacing: "-0.03em"
+  headline:
+    fontFamily: "Source Serif 4, Georgia, serif"
+    fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)"
+    fontWeight: 700
+    lineHeight: 1.15
+    letterSpacing: "-0.02em"
   title:
-    fontFamily: "Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif"
-    fontSize: "0.9375rem"
-    fontWeight: 650
-    lineHeight: 1.35
-    letterSpacing: "normal"
+    fontFamily: "Source Serif 4, Georgia, serif"
+    fontSize: "1.15rem"
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: "-0.01em"
   body:
-    fontFamily: "Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif"
-    fontSize: "1rem"
+    fontFamily: "Source Sans 3, Segoe UI, sans-serif"
+    fontSize: "0.95rem"
     fontWeight: 400
-    lineHeight: 1.65
+    lineHeight: 1.6
     letterSpacing: "normal"
   label:
-    fontFamily: "Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif"
+    fontFamily: "Source Sans 3, Segoe UI, sans-serif"
     fontSize: "0.75rem"
-    fontWeight: 600
-    lineHeight: 1.4
+    fontWeight: 700
+    lineHeight: 1.45
     letterSpacing: "0.04em"
-  brand:
-    fontFamily: "Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif"
-    fontSize: "0.8125rem"
-    fontWeight: 650
-    lineHeight: 1.4
-    letterSpacing: "0.08em"
-  mono:
-    fontFamily: "Cascadia Code, SFMono-Regular, Consolas, monospace"
-    fontSize: "0.75rem"
-    fontWeight: 400
-    lineHeight: 1.55
-    letterSpacing: "normal"
 rounded:
   none: "0"
-  full: "9999px"
 spacing:
-  xs: "0.75rem"
-  sm: "1rem"
-  md: "1.5rem"
-  lg: "2.5rem"
-  xl: "4rem"
+  xs: "0.55rem"
+  sm: "0.75rem"
+  md: "0.85rem"
+  lg: "1.5rem"
+  xl: "1.75rem"
+  section: "2.5rem"
 components:
-  brand-link:
+  masthead:
     backgroundColor: "transparent"
-    textColor: "{colors.muted}"
-    typography: "{typography.brand}"
+    textColor: "{colors.ink}"
+    typography: "{typography.display}"
     rounded: "{rounded.none}"
-    padding: "0"
+    padding: "0 0 1rem"
+  plate:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.none}"
+    width: "100%"
+  ledger-row:
+    backgroundColor: "transparent"
+    textColor: "{colors.measure}"
+    rounded: "{rounded.none}"
+    padding: "0.7rem 0"
+  section-heading:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    typography: "{typography.title}"
+    rounded: "{rounded.none}"
+    padding: "0 0 0.55rem"
   skip-link:
     backgroundColor: "{colors.ink}"
-    textColor: "{colors.surface}"
+    textColor: "{colors.paper}"
     typography: "{typography.body}"
     rounded: "{rounded.none}"
     padding: "0.75rem 1rem"
-  status-dot-online:
-    backgroundColor: "{colors.success}"
-    rounded: "{rounded.full}"
-    size: "0.55rem"
-    width: "0.55rem"
-    height: "0.55rem"
-  status-dot-degraded:
-    backgroundColor: "{colors.warning}"
-    rounded: "{rounded.full}"
-    size: "0.55rem"
-    width: "0.55rem"
-    height: "0.55rem"
-  endpoint-row:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
-    padding: "1.4rem 0"
-  summary-measure:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
-    padding: "1rem 0 0 1.25rem"
 ---
 
-# Design System: Noru Search
+# Design System: Copernicus
 
 ## Overview
 
-**Creative North Star: "The Endpoint Register"**
+**Creative North Star: "The Ephemeris Ledger"**
 
-Noru Search is a white-field technical register, not a content portal. The page itself is the reliability check: product name, two audit measures, retained sources, live validity, and removals. Atmosphere comes from off-white canvas, ink typography, and hairline rules — never from cards, shadows, gradients, or motion.
+Copernicus is a daily astronomical almanac: evidence is printed, measured, ruled, and dated rather than wrapped in application chrome. Warm paper, near-black ink, restrained green measurements, serif authority, and compact sans-serif notation make the edition feel archival without becoming nostalgic theater.
 
-Density is sparse and inspectable. Every row is a source record; green and warning marks are the only chromatic signals; monospace is reserved for endpoint URLs. The brand commitment is highly minimal UI with no animations.
-
-Audit provenance (recorded August 16, 2026; n=20 uncached sequential requests per source; GIBS n=40 across two tile classes) is product content that explains why sources appear or disappear. It is not a visual token and must not be encoded as color, type, or spacing.
+The composition gives imagery and measurements equal authority. A masthead establishes the issue, the lead plate supplies the day’s visual evidence, and ephemeris and ledger patterns turn live NASA fields into readable records. The interface is flat, square, and still; interest comes from real imagery, typographic contrast, and engraved rules rather than decoration or motion.
 
 **Key Characteristics:**
-- Off-white canvas with white surfaces and ink/muted hierarchy
-- Flat hairline rules define structure; no cards or shadows
-- System Segoe UI stack; monospace only for code/URLs
-- Status communicated by 0.55rem dots (success green / warning red-brown)
-- Zero motion; focus rings and skip link are the accessibility grammar
+- Warm almanac paper with ink, muted notation, and pale rule hierarchy
+- Source Serif 4 for masthead and editorial titles; Source Sans 3 for reading and measurement
+- Square image plates bounded by fine ink strokes
+- Tabular ledger rows with deep green measure values and plain-language call-outs
+- Engraved horizontal rules organize the edition without cards or shadows
+- No animation, decorative dashboard chrome, kickers, or eyebrows
 
 ## Colors
 
-A restrained off-white field with near-black ink, muted secondary text, and three functional accents: success, warning, and focus.
+The palette resembles ink printed on warm stock, with green reserved for measured values and blue reserved for keyboard focus.
 
 ### Primary
-- **Signal Green** (`{colors.success}`): Live-online status dots only. Rarity is intentional — green marks validity, not decoration.
-
-### Secondary
-- **Degraded Warning** (`{colors.warning}`): Default/degraded status dots when a retained source is not online.
+- **Measure Green** (`{colors.measure}`): Numerical findings, figures, and evidence values. It identifies measurement, not status or decoration.
 
 ### Tertiary
-- **Focus Blue** (`{colors.focus}`): `:focus-visible` outline only (`2px` solid, `4px` offset). Never used as fill or brand accent.
+- **Focus Blue** (`{colors.focus}`): Keyboard focus outlines only; it remains outside the editorial palette.
 
 ### Neutral
-- **Warm Canvas** (`{colors.canvas}`): Page and `html`/`body` background; theme-color meta.
-- **Paper Surface** (`{colors.surface}`): Selection text, skip-link text, and any true white surface need.
-- **Register Ink** (`{colors.ink}`): Primary text, heavy section rules, skip-link background, selection background.
-- **Muted Caption** (`{colors.muted}`): Supporting copy, brand mark, labels, provider lines, timestamps, audit-note body.
-- **Hairline Rule** (`{colors.rule}`): Interior row dividers and summary cell borders (lighter than ink rules).
-- **Code Ink** (`{colors.code-ink}`): Endpoint URL monospace text only.
+- **Almanac Paper** (`{colors.paper}`): The uninterrupted page field and browser theme color.
+- **Ledger Ink** (`{colors.ink}`): Masthead, headlines, body hierarchy, major rules, selection background, and image borders.
+- **Muted Notation** (`{colors.muted}`): Datelines, deck copy, sources, captions, metadata, and explanatory call-outs.
+- **Engraved Rule** (`{colors.rule}`): Interior ledger dividers and quiet media borders.
+- **Plate White** (`{colors.surface}`): Image loading field and the lightest material contrast.
 
 ### Named Rules
-**The Signal Scarcity Rule.** Chromatic color appears only as status dots or focus outline. Do not tint headings, rows, or backgrounds with success/warning/focus.
+**The Measure Ink Rule.** Green belongs to measured evidence. Never spread it into broad fills, headings, badges, or ornamental accents.
 
-**The Ink Rule Rule.** Section breaks that start major blocks (intro bottom, endpoint list top, audit-note top) use ink (`1px solid`). Interior separators use rule.
+**The Two-Rule Rule.** Major editorial divisions use ink; repeated interior records use the paler engraved rule.
 
 ## Typography
 
-**Display Font:** Segoe UI (with -apple-system, BlinkMacSystemFont, sans-serif)
-**Body Font:** Same system stack
-**Label/Mono Font:** Cascadia Code (with SFMono-Regular, Consolas, monospace) — code/URLs only
+**Display Font:** Source Serif 4 (with Georgia, serif)
+**Body Font:** Source Sans 3 (with Segoe UI, sans-serif)
+**Label Font:** Source Sans 3
 
-**Character:** Neutral system UI type — technical, unstyled, and platform-native. Hierarchy comes from size, weight, tracking, and case, not from a second display family.
+**Character:** The serif is engraved, authoritative, and editorial; the sans serif is lucid and contemporary. Together they read as a current scientific almanac rather than a vintage pastiche.
 
 ### Hierarchy
-- **Display** (620, `clamp(2.6rem, 7vw, 5.5rem)`, 0.95 lh, -0.035em tracking): Page title only (`h1`, max-width `12ch`).
-- **Title** (650, `0.9375rem`–`1rem`, 1.35 lh): Endpoint names (`h3`) and section headings (`h2` at `1rem` / 650).
-- **Body** (400, `1rem` / `0.9375rem`, 1.65 lh): Intro and audit-note prose (max ~`58ch`–`65ch`).
-- **Label** (600, `0.75rem`, 0.04em tracking, uppercase): Measure `dt` labels (Live now, Audit threshold, Recorded audit, Live response).
-- **Brand** (650, `0.8125rem`, 0.08em tracking, uppercase): Product name link.
-- **Mono** (400, `0.75rem`, 1.55 lh): `displayUrl` / endpoint paths only.
-- **Measure value** (600, `clamp(1.6rem, 3vw, 2.25rem)`, tabular-nums): Summary `dd` figures.
-- **Meta** (400–600, `0.8125rem`, tabular-nums where numeric): Section timestamp, provider, detail, measure `dd`.
+- **Display** (700, `clamp(2.4rem, 7vw, 4.5rem)`, 0.92 line-height, -0.03em tracking): The Copernicus masthead only.
+- **Headline** (700, `clamp(1.6rem, 3.5vw, 2.4rem)`, 1.15 line-height, -0.02em tracking): Lead plate title.
+- **Title** (700, `1rem`–`1.15rem`, approximately 1.2 line-height): Ephemeris, section titles, and record names.
+- **Body** (400, `0.95rem`–`1rem`, 1.55–1.6 line-height): Deck, APOD explanation, notes, and colophon; the masthead deck is constrained to `58ch`.
+- **Label** (600–700, `0.75rem`–`0.82rem`, 0.03–0.04em tracking, uppercase where used): Ledger labels and named sources.
+- **Measure** (600–700, `0.9rem`–`0.95rem`, tabular numerals): Ephemeris values and discovery figures in Measure Green.
 
 ### Named Rules
-**The Mono Enclosure Rule.** Monospace is exclusive to endpoint URLs. Never mono the brand, headings, or measure labels.
+**The Serif Authority Rule.** Serif type names the publication, plates, sections, and records; sans serif carries explanation, provenance, and measurement.
 
-**The Tabular Measure Rule.** Counts, latencies, percentages, and timestamps use `font-variant-numeric: tabular-nums`.
+**The Tabular Evidence Rule.** Dates and quantitative figures use tabular numerals so ledger columns remain stable.
+
+**The No Eyebrow Rule.** Do not add marketing kickers or decorative eyebrows above established headings. Provenance belongs in captions, datelines, or source lines.
 
 ## Layout
 
-Centered shell: `width: min(100% - 2rem, 72rem)`, vertical padding `clamp(2.5rem, 7vw, 6.5rem) 0 4rem`. Intro is a two-column grid (copy | summary) with `4rem` gap, ended by an ink rule. Retained sources follow with a baseline-aligned section heading, then a full-width endpoint register. Audit note is a two-column aside (heading | prose) under an ink rule.
+The edition sits in a centered `68rem` measure with `1rem` desktop side insets, `2rem` top padding, and `4rem` bottom padding. The masthead is a baseline-aligned brand/date row followed by a short deck and a heavy lower rule.
 
-**Spacing rhythm:** `0.75rem` / `1rem` / `1.5rem` / `2.5rem` / `4rem` dominate gaps and padding. Row padding is `1.4rem 0`.
+The lead folio is a two-column grid: a wider plate column (`1.35fr`) and an ephemeris column (`0.9fr`) with a `1.75rem` gutter. The lower edition repeats the model at `1.4fr / 0.8fr` for discoveries and image briefs. Vertical rhythm is compact and editorial: `0.55rem`–`0.85rem` within records, `1.5rem`–`1.75rem` between major bands, and `2.5rem` before the colophon.
 
-**Breakpoints:**
-- **≤56rem:** Intro stacks; summary caps at `22rem`; endpoint row becomes two columns (name+url | measures+detail span).
-- **≤37rem:** Shell inset tightens to `1.25rem` sides and `1.5rem` top; brand margin grows; section heading stacks; endpoint row and audit note become single column.
-
-**Density:** Register density — one job per band, generous vertical air, no side rails or card grids.
+At `56rem` and below, folio and lower grids become a single reading column. At `37rem` and below, side insets tighten to `0.625rem`, the masthead brand and date stack, and planet figures move below their record names. Mobile preserves the same editorial order: masthead, plate, explanation, ephemeris, then lower ledgers.
 
 ### Named Rules
-**The Register First Rule.** First viewport is brand, one headline, one supporting sentence, two measures, then the source list — not a dashboard of widgets.
+**The Plate-and-Ledger Rule.** On wide screens, the lead image and ephemeris share the folio; on narrow screens, preserve their order and stack them without changing their visual language.
 
 ## Elevation & Depth
 
-Fully flat. No `box-shadow`, no blur, no tonal card lift. Depth is implied only by ink vs rule hairlines and the canvas/surface distinction.
-
-### Shadow Vocabulary
-None. Shadows are prohibited.
+The system is fully flat. There are no shadows, gradients, glows, translucent panels, hover lift, or tonal card stacks. Material depth comes from the warm paper field, white image loading surfaces, photographic plates, and the contrast between heavy ink rules and pale engraved dividers.
 
 ### Named Rules
-**The Flat Register Rule.** Structure is drawn with `1px` borders. Do not introduce cards, elevation, or hover lift.
+**The Printed Plane Rule.** Every element rests on the paper. Use borders and spacing for structure; never simulate floating interface layers.
+
+**The No Motion Rule.** The edition contains no animation or transitions. State changes, including skip-link reveal, are immediate.
 
 ## Shapes
 
-Corners are square everywhere except status dots (`border-radius: 50%`, `0.55rem`). No pill chrome, no rounded panels, no clipped media. Borders are straight hairlines. Selection inverts to ink fill / surface text.
+All geometry is square (`0` radius). Image plates, thumbnails, tables, section bands, and focus-adjacent controls use straight edges. One-pixel strokes frame imagery and divide records; the masthead alone uses a stronger `2px` ink rule. Cropping is rectangular and purposeful: lead media uses `16 / 10`, thumbnails are `4.5rem` squares, and Earth observation is square.
 
 ### Named Rules
-**The Dot Exception Rule.** The only round geometry is the live-status marker. Everything else is orthogonal.
+**The Engraved Edge Rule.** Use crisp rectangular frames and horizontal rules. Do not introduce pills, rounded cards, circles, or ornamental containers.
 
 ## Components
 
-### Brand link
-- **Shape:** No radius; inline text link
-- **Style:** Muted uppercase brand type; no underline; `margin-bottom: 3rem` (`4rem` on ≤37rem)
-- **Focus:** `2px` focus outline in focus blue, `4px` offset
+### Masthead
+- **Character:** A publication mark, not navigation chrome.
+- **Structure:** Source Serif 4 brand and a muted tabular dateline share a baseline; a concise sans-serif deck follows.
+- **Rule:** A `2px` Ledger Ink border closes the masthead.
+- **Responsive:** Brand and dateline stack below `37rem`.
 
-### Skip to content
-- **Shape:** Square; off-canvas until focused
-- **Primary:** Ink background, surface text, `0.75rem 1rem` padding
-- **Focus:** Slides to `left: 0` (no animation curve — instantaneous position change)
+### Lead plate
+- **Character:** The edition’s primary visual evidence.
+- **Frame:** Square corners, `1px` Ledger Ink border, Plate White loading field, `16 / 10` media crop.
+- **Caption stack:** Serif headline, muted source/date/credit note, then readable explanation.
+- **Fallback:** Plain muted text occupies the same editorial flow; no decorative empty-state illustration.
 
-### Summary measures
-- **Shape:** Two-cell definition list under a rule top edge; cells split by left rule
-- **Style:** Uppercase muted `dt`; large tabular `dd`
-- **Role:** Live now count and audit threshold only
+### Ephemeris
+- **Character:** A compact daily measurement register paired with the plate.
+- **Structure:** Serif title above a full-width collapsed table, introduced by a `1px` ink rule.
+- **Rows:** Muted uppercase labels occupy roughly 42%; Measure Green values align beside them.
+- **Call-outs:** Each value carries a smaller muted plain-language explanation underneath.
 
-### Endpoint row (signature)
-- **Shape:** Transparent row; bottom hairline rule; desktop three-column grid (name | url | measures), detail under measures column
-- **Name cell:** Status dot + title + muted provider
-- **URL:** Mono code-ink, `overflow-wrap: anywhere`
-- **Measures:** Two-up `dl` with uppercase labels and tabular values (Online/Degraded · latency)
-- **Detail:** Muted caption for sample/validity note
-
-### Status dot
-- **Shape:** `0.55rem` circle; `aria-hidden`
-- **Online:** Success green
-- **Degraded / default:** Warning
+### Ledger rows
+- **Character:** Repeated evidence records, never cards.
+- **Structure:** Transparent rows with `0.7rem`–`0.85rem` vertical padding and a pale engraved bottom rule.
+- **Values:** Quantitative figures align right on wide screens and move beneath the title on small screens.
 
 ### Section heading
-- **Style:** `h2` title + muted tabular timestamp on one baseline row; stacks on small screens
+- **Structure:** Serif title and muted uppercase source share a baseline above a `1px` ink rule.
+- **Spacing:** `0.55rem` below the heading line and `0.85rem` before content.
+- **Language:** Use direct section names and source attribution; do not prepend kickers.
 
-### Audit note
-- **Shape:** Two-column aside under ink rule; single column ≤37rem
-- **Content:** Removed-source provenance prose in muted body type — informational, not a chrome pattern
+### Image brief
+- **Structure:** A `4.5rem` square thumbnail beside serif title and muted date metadata.
+- **Frame:** Thumbnail receives a `1px` Engraved Rule border and Plate White loading field.
 
-### Navigation
-- **Style:** Brand home link only; no app chrome, tabs, or side nav
+### Earth observation
+- **Structure:** Reuses the section heading, followed by a square plate and muted source/date metadata.
+- **Frame:** Full-width square crop with a `1px` Ledger Ink border.
+
+### Skip to content
+- **Structure:** Off-canvas until keyboard focus, then immediately appears at the upper left.
+- **Style:** Ledger Ink background, Almanac Paper text, square corners, `0.75rem 1rem` padding.
+- **Focus:** `2px` Focus Blue outline with `3px` offset.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep the off-white canvas (`#f5f5f2`) and ink/muted/rule hierarchy as the default field.
-- **Do** separate major bands with ink rules and rows with rule hairlines.
-- **Do** use status dots (`0.55rem`) for live state — success online, warning degraded.
-- **Do** reserve monospace for endpoint URLs and tabular nums for measures.
-- **Do** preserve focus-visible rings (`2px` / `#2458c6` / `4px` offset) and the skip link.
-- **Do** treat audit methodology text as content (August 16, 2026; n=20; GIBS n=40), not as design tokens.
+- **Do** use Almanac Paper as the continuous field, with Ledger Ink and Engraved Rule defining hierarchy.
+- **Do** pair Source Serif 4 editorial authority with Source Sans 3 reading clarity.
+- **Do** reserve Measure Green for numerical evidence and tabular figures.
+- **Do** treat NASA imagery as a bordered plate with source, date, and credit close by.
+- **Do** keep plain-language call-outs attached to every ephemeris figure.
+- **Do** preserve the `68rem` edition measure and stack folio columns below `56rem`.
+- **Do** preserve the blue keyboard focus ring and immediate skip-link behavior.
 
 ### Don't:
-- **Don't** add cards, shadows, gradients, glow, or rounded panels.
-- **Don't** introduce animation, transitions, or motion of any kind.
-- **Don't** use Inter/Roboto/custom display pairings; stay on the Segoe UI system stack.
-- **Don't** spread success/warning/focus into fills, badges, or decorative accents.
-- **Don't** turn the page into a browsing portal — the register is the product.
-
-### Named Rules
-**The No Motion Rule.** Brand commitment: the interface contains no animations.
+- **Don't** add cards, shadows, gradients, glow, glass, or rounded containers.
+- **Don't** animate or transition any interface element.
+- **Don't** add kickers, eyebrows, slogans, promotional copy, or dashboard labels.
+- **Don't** use Measure Green as decoration or a broad background.
+- **Don't** detach provenance from the image or measurement it qualifies.
+- **Don't** turn the edition into a landing page, dashboard, endpoint register, or app shell.
