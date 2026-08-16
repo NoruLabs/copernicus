@@ -39,8 +39,12 @@ export async function GET(request: NextRequest) {
       
       const data = await response.json();
       return NextResponse.json(data);
-    } catch (error: any) {
-      if (retries > 1 && error?.message?.includes("fetch")) {
+    } catch (error: unknown) {
+      if (
+        retries > 1 &&
+        error instanceof Error &&
+        error.message.includes("fetch")
+      ) {
         retries--;
         await new Promise(r => setTimeout(r, 2000));
         continue;

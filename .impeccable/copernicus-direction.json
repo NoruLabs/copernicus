@@ -1,0 +1,176 @@
+{
+  "title": "Choose Copernicus's visual world",
+  "question": "Copernicus should feel like a real daily publication built from NASA evidence—not a landing page or a themed dashboard. Choose the publication system.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "The Wire Service Night Desk",
+      "kicker": "THE ROLL",
+      "lineage": "newsroom teletype desks and late-edition proof sheets",
+      "thesis": "NASA feeds arrive as dispatches that an editor has ordered into one daily front page.",
+      "palette": ["#f2f0e9", "#171816", "#5c625b", "#b9c3b5"],
+      "materials": ["uncoated proof paper", "hairline rules", "source stamps"],
+      "viewport": "A compact masthead and dateline sit above one decisive image-led dispatch, with briefs and measurements packed alongside it.",
+      "risk": "It can feel austere if imagery is treated as decoration instead of evidence.",
+      "raised": [
+        {
+          "from": "challenger-museum",
+          "raise": "Every edition gives one verified NASA image enough scale to create genuine visual interest."
+        },
+        {
+          "from": "challenger-rail",
+          "raise": "Source, freshness, and degraded state remain legible through line form and labels, never color alone."
+        }
+      ],
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "masthead + dateline", "x": 0, "y": 0, "w": 12, "h": 1, "accent": true },
+          { "label": "lead NASA image", "x": 0, "y": 1, "w": 7, "h": 5, "accent": true },
+          { "label": "lead dispatch", "x": 7, "y": 1, "w": 5, "h": 3 },
+          { "label": "daily measures", "x": 7, "y": 4, "w": 5, "h": 2 },
+          { "label": "briefs", "x": 0, "y": 6, "w": 8, "h": 4 },
+          { "label": "source ledger", "x": 8, "y": 6, "w": 4, "h": 4 }
+        ]
+      }
+    },
+    {
+      "id": "model-pick",
+      "label": "The Ephemeris Ledger",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "nautical almanacs and astronomical ephemerides",
+      "thesis": "The day in space is read as a precise almanac where imagery and measurements share equal authority.",
+      "palette": ["#f7f5ee", "#20231f", "#35564a", "#c8ccc2"],
+      "materials": ["almanac paper", "tabular figures", "engraved rules"],
+      "viewport": "A dated celestial ledger opens with today's picture, then aligns objects, distances, and discoveries to a strict reading grid.",
+      "risk": "Its familiarity to science publishing can make the daily edition feel reference-like rather than urgent.",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "edition header", "x": 0, "y": 0, "w": 12, "h": 1, "accent": true },
+          { "label": "daily image", "x": 0, "y": 1, "w": 6, "h": 5 },
+          { "label": "ephemeris table", "x": 6, "y": 1, "w": 6, "h": 5, "accent": true },
+          { "label": "archive notes", "x": 0, "y": 6, "w": 12, "h": 4 }
+        ]
+      }
+    },
+    {
+      "id": "challenger-museum",
+      "label": "The Daily Exhibition",
+      "verdict": "competitive",
+      "lineage": "museum exhibition identities",
+      "thesis": "Each date becomes a one-day exhibition built around a single extraordinary NASA image.",
+      "palette": ["#e9e7df", "#151515", "#8f4935", "#d1cabd"],
+      "materials": ["art-directed crop", "caption band", "gallery label"],
+      "viewport": "One responsive image crop owns the page while a fixed information band carries title, date, source, and the day's briefs.",
+      "case": "Wins immediate audience interest; the wire desk is clearer about multiple live datasets and daily editorial hierarchy.",
+      "risk": "A dominant image can turn the issue into a gallery and hide the breadth of available data.",
+      "hero": "https://impeccable.style/worlds/cards/posters-covers-sleeves-museum-exhibition-identity-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/posters-covers-sleeves-museum-exhibition-identity.webp",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "full crop", "x": 0, "y": 0, "w": 12, "h": 7, "accent": true },
+          { "label": "edition band", "x": 0, "y": 7, "w": 12, "h": 1 },
+          { "label": "brief captions", "x": 0, "y": 8, "w": 12, "h": 2 }
+        ]
+      }
+    },
+    {
+      "id": "challenger-expedition",
+      "label": "The Expedition Press",
+      "verdict": "competitive",
+      "lineage": "newspapers printed during polar expeditions",
+      "thesis": "The daily issue reads like a field paper transmitted from the edge of what humanity can observe.",
+      "palette": ["#e8e2d3", "#1c1b18", "#67645b"],
+      "materials": ["rag paper", "single ink", "tipped-in image plate"],
+      "viewport": "A hand-sized issue measure carries one NASA plate, a compact masthead, and reports grouped by source conditions.",
+      "case": "Strongly identifies exploration and publication; loses product clarity when historical texture competes with current data.",
+      "risk": "Visible distress or faux-print effects would become theatrical and violate the direct UX goal.",
+      "hero": "https://impeccable.style/worlds/cards/graphic-worlds-publishing-expedition-ice-press-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/graphic-worlds-publishing-expedition-ice-press.webp",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "masthead", "x": 1, "y": 0, "w": 10, "h": 1 },
+          { "label": "plate", "x": 1, "y": 1, "w": 7, "h": 5, "accent": true },
+          { "label": "field report", "x": 8, "y": 1, "w": 3, "h": 5 },
+          { "label": "dispatch columns", "x": 1, "y": 6, "w": 10, "h": 4 }
+        ]
+      }
+    },
+    {
+      "id": "challenger-rail",
+      "label": "The Spectral Rail",
+      "verdict": "declined",
+      "lineage": "emission-line spectrograms",
+      "thesis": "Every story registers as a measured line on one calibrated daily spectrum.",
+      "palette": ["#202322", "#eeeadd", "#589b70", "#bf6654"],
+      "materials": ["charcoal continuum", "bone legends", "emission hairlines"],
+      "viewport": "A calibrated rail indexes all stories and expands the selected dispatch into one large plate.",
+      "case": "Precise and distinctive, but readers do not identify a spectrum as a newspaper and scanning becomes interaction-dependent.",
+      "kept": "State must remain visible through line form, labels, and density rather than hue alone.",
+      "risk": "The rail becomes an interface conceit that delays reading.",
+      "hero": "https://impeccable.style/worlds/cards/operate-c-emission-line-rail-hero.webp"
+    },
+    {
+      "id": "challenger-brick",
+      "label": "The Assembly Brief",
+      "verdict": "declined",
+      "lineage": "brick build-instruction books",
+      "thesis": "NASA discoveries are explained as numbered visual steps with exact call-outs.",
+      "palette": ["#9ec8df", "#171717", "#c84132", "#e8c84b"],
+      "materials": ["step diagrams", "stud grid", "call-out boxes"],
+      "viewport": "The lead story decomposes into a visual sequence while secondary sources sit in a parts inventory.",
+      "case": "Excellent for explainers, but the daily data is not a sequential assembly task.",
+      "kept": "Every complex measure should receive a plain-language call-out beside the evidence.",
+      "risk": "A playful instruction grammar weakens the publication's credibility.",
+      "hero": "https://impeccable.style/worlds/cards/games-toys-physics-play-brick-build-instructions-hero.webp"
+    },
+    {
+      "id": "challenger-cyc",
+      "label": "The Orbital Dawn",
+      "verdict": "declined",
+      "lineage": "theater cyclorama lighting",
+      "thesis": "The edition moves from night to day as NASA observations establish the day's cosmic picture.",
+      "palette": ["#111217", "#244a8a", "#bd7381", "#f2f0e8"],
+      "materials": ["horizon bands", "cue labels", "light states"],
+      "viewport": "Stories stack in atmospheric horizon bands from dark observation to bright explanation.",
+      "case": "Visually compelling, but atmospheric sequencing obscures source comparison and depends on motion the brief rejects.",
+      "kept": "The page should shift density between decisive imagery and quiet reading bands.",
+      "risk": "It feels cinematic rather than journalistic.",
+      "hero": "https://impeccable.style/worlds/cards/stagecraft-theater-lighting-cyclorama-dawn-hero.webp"
+    }
+  ],
+  "reroll": {
+    "registers": ["safer", "bolder"]
+  },
+  "buildPath": {
+    "value": "code",
+    "toggle": false
+  },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A restrained digital broadsheet with masthead, lead story, article grid, and section links.",
+    "palette": ["#ffffff", "#111111", "#777777"],
+    "materials": ["newspaper grid", "editorial photography", "serif headlines"],
+    "viewport": "A familiar newspaper homepage, executed carefully and without decorative product marketing.",
+    "risk": "Clear and usable, but visually interchangeable with established digital newspapers.",
+    "wireframe": {
+      "cols": 12,
+      "rows": 10,
+      "regions": [
+        { "label": "masthead + nav", "x": 0, "y": 0, "w": 12, "h": 1 },
+        { "label": "lead story", "x": 0, "y": 1, "w": 8, "h": 5, "accent": true },
+        { "label": "top stories", "x": 8, "y": 1, "w": 4, "h": 5 },
+        { "label": "article grid", "x": 0, "y": 6, "w": 12, "h": 4 }
+      ]
+    }
+  },
+  "steer": true
+}

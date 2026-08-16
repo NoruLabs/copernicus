@@ -1,94 +1,24 @@
 ﻿import type { Metadata } from "next";
-import { Sora, Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
-import { ThemeProvider } from "./components/ThemeProvider";
-import { QueryProvider } from "./components/QueryProvider";
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
-import { BackgroundSwirl } from "./components/BackgroundSwirl";
-
-const sora = Sora({
-  variable: "--font-sora",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
-  title: {
-    default: "Noru Search - Universal Space Data Browser",
-    template: "%s | Noru Search",
-  },
+  title: "Noru Search — NASA endpoint status",
   description:
-    "Free & open-source space data explorer application that lets you browse NASA datasets, space news, and real-time space data from a single interface.",
-  keywords: [
-    "NASA",
-    "space",
-    "exoplanets",
-    "asteroids",
-    "Mars",
-    "APOD",
-    "near earth objects",
-    "space weather",
-    "astronomy",
-  ],
+    "A minimal reliability check for retained NASA and space-data endpoints.",
   authors: [{ name: "Noru Labs", url: "https://github.com/NoruLabs" }],
-  creator: "Noru Labs",
-  publisher: "Noru Labs",
-  metadataBase: new URL("https://noru-search.vercel.app"),
-  openGraph: {
-    title: {
-      default: "Noru Search - Universal Space Data Browser",
-      template: "%s | Noru Search",
-    },
-    description:
-      "Free & open-source space data explorer application that lets you browse NASA datasets, space news, and real-time space data from a single interface.",
-    url: "https://noru-search.vercel.app",
-    siteName: "Noru Search",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Noru Search Preview Image",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: {
-      default: "Noru Search - Universal Space Data Browser",
-      template: "%s | Noru Search",
-    },
-    description:
-      "Free & open-source space data explorer application that lets you browse NASA datasets, space news, and real-time space data from a single interface.",
-    images: ["/og-image.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
   icons: {
-    icon: [
-      { url: "/noru-icon.ico", sizes: "any" },
-      { url: "/noru-icon.png", type: "image/png" },
-    ],
-    shortcut: "/noru-icon.ico",
-    apple: "/noru-icon.png",
+    icon: "/noru-icon.ico",
   },
 };
+
+const designContract = `<!--
+THESIS: Endpoint reliability is the page; refuse the content-portal dashboard.
+OWN-WORLD: White field, ink typography, green status marks, rules instead of cards.
+STORY: A developer sees the threshold, retained sources, live validity, and removals.
+FIRST VIEWPORT: Product title and two audit measures lead directly into the source register.
+FORM: Minimal technical register, pinned by the brief; seed key user-minimal-endpoint-audit.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->`;
 
 export default function RootLayout({
   children,
@@ -96,30 +26,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#23262A" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="theme-color" content="#f5f5f2" />
       </head>
-      <body
-        className={`${sora.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-bg-primary text-text-primary`}
-      >
+      <body>
+        <template
+          aria-hidden="true"
+          dangerouslySetInnerHTML={{ __html: designContract }}
+        />
         <a href="#main-content" className="skip-to-content">
           Skip to content
         </a>
-        <ThemeProvider>
-          <QueryProvider>
-            <BackgroundSwirl />
-            <div className="flex min-h-screen flex-col bg-transparent relative z-10">
-              <Header />
-              {children}
-              <Footer />
-            </div>
-          </QueryProvider>
-        </ThemeProvider>
-        <Analytics />
+        {children}
       </body>
     </html>
   );
