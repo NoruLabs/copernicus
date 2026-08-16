@@ -8,41 +8,48 @@ web
 
 ## Users
 
-Developers evaluating which NASA and space-data endpoints are reliable enough to use.
+Curious readers who want to understand today's NASA observations without digging through raw APIs or marketing pages.
 
 ## Product Purpose
 
-Noru Search is a small endpoint-checking interface for verifying that supported NASA and related space-data sources return usable data. Success means the retained sources produce a valid response in at least 19 of 20 repeated checks.
+Copernicus is a daily NASA newspaper. It turns verified NASA data feeds into one readable edition so people can see the sky, nearby objects, discoveries, and Earth imagery directly.
 
 ## Positioning
 
-The product exposes endpoint reliability and sample data directly instead of presenting itself as a general-purpose space-content portal.
+The product publishes evidence as an almanac-style edition instead of offering a landing page, dashboard, or endpoint catalog.
 
 ## Operating Context
 
-Developers use the site while evaluating upstream APIs. They need to see which source was checked, whether its response is valid, and a small sample proving the data can be consumed.
+Readers open the site to today's issue. They expect a dated masthead, a decisive NASA image, and a clear ledger of measurements and discoveries drawn from live sources.
 
 ## Capabilities and Constraints
 
-- Retain only data sources that pass at least 19 of 20 repeated, uncached checks with a valid response shape.
-- Remove routes and interface features that depend on sources below the reliability threshold.
-- Keep the existing Next.js web stack.
-- Prefer a small, inspectable interface over a broad browsing experience.
+- Publish only from retained sources that passed the August 16, 2026 reliability audit at ≥95%: APOD, Near Earth Objects, NASA Image Library, Exoplanet Archive, and GIBS.
+- English only for the first edition.
+- Automatic daily front page; no separate marketing landing page.
+- Keep the Next.js web stack.
+- Interface must stay minimal and contain no animations.
+- Do not fabricate news copy, quotes, or scientific claims beyond what the feeds provide.
 
 ## Brand Commitments
 
-- Keep the Noru Search name.
-- The interface must be highly minimal and contain no animations.
+- Product name: Copernicus.
+- Visual world: The Ephemeris Ledger (seed `c922ac22`, chosen pick).
+- No landing-page marketing, hero slogans, or decorative AI-dashboard chrome.
 
 ## Evidence on Hand
 
-- Existing API routes and data consumers in `app/`.
-- Local development request logs show APOD, Spaceflight News, and Exoplanet Archive returning HTTP 200, while TechPort repeatedly returns HTTP 500 because its project ID response is not an array.
-- No testimonials, performance claims, or production reliability history are available and none should be fabricated.
+- Retained NASA and NASA-adjacent feeds proven in the endpoint audit.
+- APOD supplies the day's picture and caption.
+- NEO feed supplies near-Earth object counts and sample approaches.
+- Exoplanet Archive supplies recent discoveries with measurable fields.
+- NASA Image Library and GIBS supply additional visual evidence.
+- No testimonials, traffic claims, or editorial staff claims exist and none should be fabricated.
 
 ## Product Principles
 
-- Reliability is demonstrated through repeated checks.
-- A valid payload matters more than an HTTP 200 alone.
-- Failed sources are removed rather than hidden behind graceful-looking fallbacks.
-- Status and source provenance remain easy to inspect.
+- Open directly into today's edition.
+- Imagery and measurements share equal authority.
+- Every figure carries a plain-language call-out and a named source.
+- Prefer removal of unreliable sources over graceful-looking emptiness.
+- Interest comes from real NASA evidence, not from interface theatrics.

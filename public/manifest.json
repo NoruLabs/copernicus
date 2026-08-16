@@ -1,19 +1,19 @@
 {
-  "name": "Noru Search — Universal Space Data Browser",
-  "short_name": "Noru Search",
-  "description": "Browse NASA datasets, discover exoplanets, track asteroids, and explore Mars rover photos.",
+  "name": "Copernicus",
+  "short_name": "Copernicus",
+  "description": "A daily NASA newspaper of verified imagery and measurements.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#23262A",
-  "theme_color": "#23262A",
+  "background_color": "#f7f5ee",
+  "theme_color": "#f7f5ee",
   "orientation": "any",
   "icons": [
     {
-      "src": "/noru-icon.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/copernicus-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ],
-  "categories": ["education", "science"]
+  "categories": ["education", "news", "science"]
 }
