@@ -39,6 +39,9 @@ yarn-error.log*
 # skills
 .github/skills
 
+# design review artifacts
+.impeccable/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
