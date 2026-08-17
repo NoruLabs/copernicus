@@ -12,7 +12,7 @@ Curious readers who want to understand today's NASA observations without digging
 
 ## Product Purpose
 
-Copernicus is a daily NASA newspaper. It turns verified NASA data feeds into one readable edition so people can see the sky, nearby objects, discoveries, and Earth imagery directly.
+Copernicus is a daily NASA newspaper. It turns verified NASA data feeds into one readable edition so people can see the sky, nearby objects, discoveries, and recent imagery directly.
 
 ## Positioning
 
@@ -20,11 +20,11 @@ The product publishes evidence as an almanac-style edition instead of offering a
 
 ## Operating Context
 
-Readers open the site to today's issue. They expect a dated masthead, a decisive NASA image, and a clear ledger of measurements and discoveries drawn from live sources.
+Readers open the site to today's issue. A left feature menu provides direct same-page access to APOD, Near Earth, Exoplanets, and the Image Library. The displayed date and 24-hour time follow the reader's device locale and time zone.
 
 ## Capabilities and Constraints
 
-- Publish only from retained sources that passed the August 16, 2026 reliability audit at ≥95%: APOD, Near Earth Objects, NASA Image Library, Exoplanet Archive, and GIBS.
+- Publish only from APOD, Near Earth Objects, NASA Image Library, and Exoplanet Archive.
 - English only for the first edition.
 - Automatic daily front page; no separate marketing landing page.
 - Keep the Next.js web stack.
@@ -43,7 +43,7 @@ Readers open the site to today's issue. They expect a dated masthead, a decisive
 - APOD supplies the day's picture and caption.
 - NEO feed supplies near-Earth object counts and sample approaches.
 - Exoplanet Archive supplies recent discoveries with measurable fields.
-- NASA Image Library and GIBS supply additional visual evidence.
+- NASA Image Library supplies the five latest image briefs available from the current search result.
 - No testimonials, traffic claims, or editorial staff claims exist and none should be fabricated.
 
 ## Product Principles

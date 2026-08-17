@@ -17,7 +17,7 @@ const sourceSerif = Source_Serif_4({
 export const metadata: Metadata = {
   title: "Copernicus — daily NASA edition",
   description:
-    "A minimal daily newspaper of verified NASA imagery, near-Earth objects, exoplanet discoveries, and Earth observation.",
+    "A minimal daily view of NASA imagery, near-Earth objects, exoplanet discoveries, and image-library releases.",
   authors: [{ name: "Noru Labs", url: "https://github.com/NoruLabs" }],
   icons: {
     icon: "/copernicus-icon.svg",
@@ -25,10 +25,10 @@ export const metadata: Metadata = {
 };
 
 const designContract = `<!--
-THESIS: Today's NASA evidence is an almanac, not a landing page or dashboard.
-OWN-WORLD: Almanac paper, engraved rules, deep green measure ink, Source Serif/Sans, tabular ledger rows.
-STORY: A reader opens the dated edition, sees the day's image, then reads objects and discoveries as equal evidence.
-FIRST VIEWPORT: Masthead and dateline above a large APOD plate sharing the fold with the ephemeris table.
+THESIS: NASA data reads as a direct daily feed, not a landing page or dashboard.
+OWN-WORLD: Near-white paper, black ink, Source Serif/Sans, ruled feed sections, line icons, and no decorative color.
+STORY: A reader uses the feature rail, sees APOD first, then understands nearby objects, recent planets, and image releases.
+FIRST VIEWPORT: A Twitter-like left feature rail sits beside a sticky local date header and a full-width APOD story.
 FORM: The Ephemeris Ledger; pick over assigned Wire Desk; seed c922ac22.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 -->`;
@@ -42,7 +42,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#f7f5ee" />
+        <meta name="theme-color" content="#FDFDFC" />
       </head>
       <body className={`${sourceSans.variable} ${sourceSerif.variable}`}>
         <div

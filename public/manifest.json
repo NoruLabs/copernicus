@@ -4,8 +4,8 @@
   "description": "A daily NASA newspaper of verified imagery and measurements.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f7f5ee",
-  "theme_color": "#f7f5ee",
+  "background_color": "#FDFDFC",
+  "theme_color": "#FDFDFC",
   "orientation": "any",
   "icons": [
     {

@@ -36,12 +36,7 @@ export type EditionImage = {
   title: string;
   date: string | null;
   thumbnailUrl: string;
-};
-
-export type EditionEarth = {
-  tileUrl: string;
-  label: string;
-  date: string;
+  description: string | null;
 };
 
 export type DailyEdition = {
@@ -51,18 +46,11 @@ export type DailyEdition = {
   neo: EditionNeo | null;
   planets: EditionPlanet[];
   images: EditionImage[];
-  earth: EditionEarth | null;
   errors: string[];
 };
 
 function formatDate(date: Date) {
   return date.toISOString().slice(0, 10);
-}
-
-function gibsDate(date: Date) {
-  const d = new Date(date);
-  d.setUTCDate(d.getUTCDate() - 2);
-  return formatDate(d);
 }
 
 async function fetchJson(url: string, init?: RequestInit) {
@@ -147,7 +135,7 @@ async function loadNeo(editionDate: string): Promise<EditionNeo> {
 
 async function loadPlanets(): Promise<EditionPlanet[]> {
   const query =
-    "SELECT TOP 6 pl_name, hostname, disc_year, pl_rade, sy_dist, discoverymethod FROM pscomppars WHERE disc_year IS NOT NULL ORDER BY disc_year DESC";
+    "SELECT TOP 5 pl_name, hostname, disc_year, pl_rade, sy_dist, discoverymethod FROM pscomppars WHERE disc_year IS NOT NULL ORDER BY disc_year DESC";
   const data = await fetchJson(
     `https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=${encodeURIComponent(query)}&format=json`,
   );
@@ -167,22 +155,29 @@ async function loadPlanets(): Promise<EditionPlanet[]> {
 }
 
 async function loadImages(): Promise<EditionImage[]> {
-  const data = await fetchJson(
-    "https://images-api.nasa.gov/search?q=earth&media_type=image&page=1",
+  const currentYear = new Date().getUTCFullYear();
+  const baseUrl = `https://images-api.nasa.gov/search?q=&media_type=image&year_start=${currentYear}`;
+  const initialData = await fetchJson(baseUrl);
+  const totalHits = Number(initialData?.collection?.metadata?.total_hits ?? 0);
+  const lastPage = Math.max(1, Math.ceil(totalHits / 100));
+  const pageNumbers = lastPage > 1 ? [lastPage - 1, lastPage] : [lastPage];
+  const pages = await Promise.all(
+    pageNumbers.map((page) => fetchJson(`${baseUrl}&page=${page}`)),
   );
-  const items = data?.collection?.items;
+  const items = pages.flatMap((data) => data?.collection?.items ?? []);
 
   if (!Array.isArray(items)) {
     throw new Error("NASA Images payload incomplete");
   }
 
   return items
-    .slice(0, 4)
     .map((item: {
       data?: Array<{
         nasa_id?: string;
         title?: string;
         date_created?: string;
+        description?: string;
+        description_508?: string;
       }>;
       links?: Array<{ rel?: string; href?: string }>;
     }) => {
@@ -198,32 +193,33 @@ async function loadImages(): Promise<EditionImage[]> {
         title: info.title,
         date: info.date_created ?? null,
         thumbnailUrl,
+        description: summarizeDescription(
+          info.description_508 ?? info.description ?? null,
+        ),
       };
     })
-    .filter((item: EditionImage | null): item is EditionImage => item !== null);
+    .filter((item: EditionImage | null): item is EditionImage => item !== null)
+    .sort((a, b) => {
+      const aTime = a.date ? new Date(a.date).getTime() : 0;
+      const bTime = b.date ? new Date(b.date).getTime() : 0;
+      return bTime - aTime;
+    })
+    .slice(0, 5);
 }
 
-async function loadEarth(): Promise<EditionEarth> {
-  const date = gibsDate(new Date());
-  const tileUrl = `https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_CorrectedReflectance_TrueColor/default/${date}/GoogleMapsCompatible_Level9/3/4/4.jpg`;
-  const response = await fetch(tileUrl, { cache: "no-store" });
-
-  if (!response.ok) {
-    throw new Error(`GIBS HTTP ${response.status}`);
+function summarizeDescription(value: string | null) {
+  if (!value) {
+    return null;
   }
 
-  const contentType = response.headers.get("content-type") ?? "";
-  const body = await response.arrayBuffer();
-
-  if (!contentType.startsWith("image/") || body.byteLength < 1000) {
-    throw new Error("GIBS tile invalid");
+  const text = value.replace(/\s+/g, " ").trim();
+  if (text.length <= 220) {
+    return text;
   }
 
-  return {
-    tileUrl,
-    label: "MODIS Terra true color",
-    date,
-  };
+  const shortened = text.slice(0, 220);
+  const lastSpace = shortened.lastIndexOf(" ");
+  return `${shortened.slice(0, lastSpace > 160 ? lastSpace : 220)}…`;
 }
 
 export async function getDailyEdition(): Promise<DailyEdition> {
@@ -231,7 +227,7 @@ export async function getDailyEdition(): Promise<DailyEdition> {
   const editionDate = formatDate(now);
   const errors: string[] = [];
 
-  const [apod, neo, planets, images, earth] = await Promise.all([
+  const [apod, neo, planets, images] = await Promise.all([
     loadApod().catch((error) => {
       errors.push(`APOD: ${error instanceof Error ? error.message : "failed"}`);
       return null;
@@ -252,10 +248,6 @@ export async function getDailyEdition(): Promise<DailyEdition> {
       );
       return [] as EditionImage[];
     }),
-    loadEarth().catch((error) => {
-      errors.push(`GIBS: ${error instanceof Error ? error.message : "failed"}`);
-      return null;
-    }),
   ]);
 
   return {
@@ -265,7 +257,6 @@ export async function getDailyEdition(): Promise<DailyEdition> {
     neo,
     planets,
     images,
-    earth,
     errors,
   };
 }
@@ -274,15 +265,4 @@ export function formatKm(value: number) {
   return new Intl.NumberFormat("en", {
     maximumFractionDigits: value >= 1_000_000 ? 0 : 0,
   }).format(Math.round(value));
-}
-
-export function formatEditionDate(isoDate: string) {
-  const [year, month, day] = isoDate.split("-").map(Number);
-  return new Intl.DateTimeFormat("en", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(Date.UTC(year, month - 1, day)));
 }

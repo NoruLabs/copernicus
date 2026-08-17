@@ -2,7 +2,7 @@
 
 A daily NASA newspaper. Open the site and read today's edition—no landing page, no dashboard chrome.
 
-Live NASA evidence is arranged as an almanac: the Astronomy Picture of the Day, near-Earth object measures, recent exoplanet discoveries, image briefs, and an Earth observation plate.
+Live NASA evidence is arranged in a direct feature feed: the Astronomy Picture of the Day, near-Earth object measures, five recent exoplanet discoveries, and five recent image briefs.
 
 ## Sources
 
@@ -12,7 +12,6 @@ Only feeds retained after the August 16, 2026 reliability audit (≥95% valid pa
 - NASA Near Earth Objects
 - NASA Image and Video Library
 - NASA Exoplanet Archive
-- NASA GIBS imagery
 
 ## Stack
 
