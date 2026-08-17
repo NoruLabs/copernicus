@@ -1,4 +1,5 @@
-﻿import { LocalDateTime } from "./components/LocalDateTime";
+﻿import Link from "next/link";
+import { HeaderTools } from "./components/HeaderTools";
 import { Sidebar } from "./components/Sidebar";
 import { formatKm, getDailyEdition } from "./lib/edition";
 
@@ -43,13 +44,13 @@ export default async function Home() {
 
       <main id="main-content" className="feed">
         <header className="feed-header" id="home">
-          <h1>Home</h1>
-          <LocalDateTime />
+          <h1>What&apos;s new today</h1>
+          <HeaderTools />
         </header>
 
         <section className="feature-section apod-section" id="apod">
           <div className="feature-heading">
-            <h2>Astronomy picture of the day</h2>
+            <h2><Link href={`/apod?date=${edition.apod?.date ?? edition.editionDate}`}>Astronomy picture of the day</Link></h2>
             <p>NASA APOD</p>
           </div>
 
@@ -57,11 +58,16 @@ export default async function Home() {
             <article className="apod-story">
               <div className="plate-frame">
                 {edition.apod.mediaType === "image" ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={edition.apod.url}
-                    alt={edition.apod.title}
-                  />
+                  <Link
+                    className="plate-link"
+                    href={`/apod?date=${edition.apod.date}`}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={edition.apod.url}
+                      alt={edition.apod.title}
+                    />
+                  </Link>
                 ) : edition.apod.mediaType === "video" ? (
                   <iframe
                     src={edition.apod.url}
@@ -73,7 +79,7 @@ export default async function Home() {
                 )}
               </div>
               <div className="story-copy">
-                <h3>{edition.apod.title}</h3>
+                <h3><Link href={`/apod?date=${edition.apod.date}`}>{edition.apod.title}</Link></h3>
                 <p className="meta">
                   {edition.apod.date}
                   {edition.apod.copyright
@@ -92,12 +98,13 @@ export default async function Home() {
 
         <section className="feature-section" id="near-earth">
           <div className="feature-heading">
-            <h2>Near Earth today</h2>
+            <h2><Link href="/near-earth">Near Earth today</Link></h2>
             <p>NASA NEO</p>
           </div>
 
           {edition.neo ? (
             <div className="facts-list">
+              <Link className="row-link" href="/near-earth">
               <article className="fact-row">
                 <p className="fact-value">{edition.neo.count}</p>
                 <div>
@@ -108,7 +115,9 @@ export default async function Home() {
                   </p>
                 </div>
               </article>
+              </Link>
 
+              <Link className="row-link" href="/near-earth">
               <article className="fact-row">
                 <p className="fact-value">{edition.neo.hazardous}</p>
                 <div>
@@ -120,7 +129,12 @@ export default async function Home() {
                   </p>
                 </div>
               </article>
+              </Link>
 
+              <Link
+                className="row-link"
+                href={edition.neo.closest ? `/near-earth?object=${encodeURIComponent(edition.neo.closest.id)}` : "/near-earth"}
+              >
               <article className="fact-row">
                 <p className="fact-value fact-distance">
                   {edition.neo.closest
@@ -136,6 +150,7 @@ export default async function Home() {
                   </p>
                 </div>
               </article>
+              </Link>
             </div>
           ) : (
             <p className="empty">Near-Earth object data is unavailable.</p>
@@ -144,14 +159,19 @@ export default async function Home() {
 
         <section className="feature-section" id="exoplanets">
           <div className="feature-heading">
-            <h2>Five recent discoveries</h2>
+            <h2><Link href="/exoplanets">Five recent discoveries</Link></h2>
             <p>NASA Exoplanet Archive</p>
           </div>
 
           {edition.planets.length > 0 ? (
             <div className="planet-list">
               {edition.planets.map((planet) => (
-                <article className="planet-row" key={`${planet.name}-${planet.host}`}>
+                <Link
+                  className="row-link"
+                  href={`/exoplanets?planet=${encodeURIComponent(planet.name)}`}
+                  key={`${planet.name}-${planet.host}`}
+                >
+                <article className="planet-row">
                   <div>
                     <h3>{planet.name}</h3>
                     <p className="meta">
@@ -162,6 +182,7 @@ export default async function Home() {
                   </div>
                   <p className="figure">{planetMeasure(planet.radiusEarth, planet.distancePc)}</p>
                 </article>
+                </Link>
               ))}
             </div>
           ) : (
@@ -171,14 +192,19 @@ export default async function Home() {
 
         <section className="feature-section" id="images">
           <div className="feature-heading">
-            <h2>Five latest image briefs</h2>
+            <h2><Link href="/image-library">Five latest image briefs</Link></h2>
             <p>NASA Image Library</p>
           </div>
 
           {edition.images.length > 0 ? (
             <div className="image-list">
               {edition.images.map((image) => (
-                <article className="image-row" key={image.id}>
+                <Link
+                  className="row-link"
+                  href={`/image-library?item=${encodeURIComponent(image.id)}`}
+                  key={image.id}
+                >
+                <article className="image-row">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     className="thumb"
@@ -199,6 +225,7 @@ export default async function Home() {
                     </p>
                   </div>
                 </article>
+                </Link>
               ))}
             </div>
           ) : (
