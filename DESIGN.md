@@ -8,6 +8,10 @@ colors:
   faint: "rgba(17, 17, 17, 0.08)"
   rule: "rgba(17, 17, 17, 0.16)"
   focus: "#2458c6"
+  flairPurple: "#A5A6F6"
+  flairGreen: "#7BD88F"
+  flairYellow: "#FFD36E"
+  flairCoral: "#FF9BB3"
 typography:
   display:
     fontFamily: "Source Serif 4, Georgia, serif"
@@ -103,15 +107,16 @@ components:
 
 Copernicus ships as a direct daily NASA feed: near-white paper, black ink, Source Serif / Source Sans, and ruled sections instead of a marketing landing page or dashboard shell. The Ephemeris Ledger world remains the product commitment, but the finished interface reads as a Twitter-like feature rail beside a central newspaper column—quiet, exact, and still.
 
-Imagery and measurements share equal authority. A sticky left rail (bottom bar on small screens) jumps to APOD, Near Earth, Exoplanets, and Image Library. The feed opens with a sticky local date and 24-hour time, then a full-width astronomy picture, plain-language near-Earth facts, five exoplanet rows, and five image briefs. Structure comes from alpha ink rules and typography, never from decorative color, cards, or motion.
+Imagery and measurements share equal authority. A sticky left rail (bottom bar on small screens) jumps to APOD, Near Earth, Exoplanets, and Image Library. The feed opens with a sticky local date and 24-hour time, then a full-width astronomy picture, plain-language near-Earth facts, five exoplanet rows, and five image briefs. Structure comes from alpha ink rules and typography; motion and color are reserved for the orbit icon and APOD download interaction.
 
 **Key Characteristics:**
 - Near-white paper (`#FDFDFC`) and black ink (`#111111`) with muted/rule/faint alpha roles
 - Source Serif 4 for brand and editorial titles; Source Sans 3 for reading, metadata, and navigation labels
-- X-style sticky left feature rail with line icons and labels; mobile bottom navigation
+- X-style sticky left feature rail with named camera, orbit, Earth, and gallery icons; mobile bottom navigation
 - Central ruled feed with sticky local date / 24-hour time header
 - Full-width APOD plate, plain-language Near Earth facts, five exoplanet rows, five image briefs
-- Flat, still surface: no animation, cards, GIBS, warm cream, measure green, deck copy, or decorative color
+- Flat reading surface with three motion exceptions: the Near Earth orbit icon, APOD download flair, and calendar reveal
+- User-controlled paper-light and ink-dark themes
 
 ## Colors
 
@@ -132,6 +137,8 @@ The palette is ink on paper. Hue is reserved for keyboard focus; every other rol
 
 **The Focus Exception Rule.** Focus Blue may appear only as a keyboard outline; it never brands sections, figures, or chrome.
 
+**The Download Flair Exception.** Purple (`#A5A6F6`), green (`#7BD88F`), yellow (`#FFD36E`), and coral (`#FF9BB3`) appear only inside the APOD download hover bloom.
+
 ## Typography
 
 **Display Font:** Source Serif 4 (with Georgia, serif)
@@ -143,7 +150,7 @@ The palette is ink on paper. Hue is reserved for keyboard focus; every other rol
 ### Hierarchy
 - **Display** (700, `1.35rem`): Sidebar brand wordmark only.
 - **Headline** (700, `clamp(1.6rem, 4vw, 2.4rem)`, 1.12 line-height, -0.02em tracking): APOD story title; large fact values use a related serif measure (`clamp(1.65rem, 4vw, 2.25rem)`, tabular numerals).
-- **Title** (700, `1.15rem`–`1.3rem`, -0.01em tracking): Feed “Home” header, feature section titles, and record names at `1rem`.
+- **Title** (700, `1.15rem`–`1.3rem`, -0.01em tracking): Feed and archive headers, feature section titles, and record names at `1rem`.
 - **Body** (400, `0.9rem`–`0.95rem`, 1.5–1.6 line-height): Explanations, fact call-outs, image descriptions, and colophon.
 - **Label** (600–700, `0.68rem`–`0.82rem`, 0.04em tracking when uppercase): Feature-rail labels, uppercase source stamps, local time, and meta lines.
 
@@ -158,7 +165,7 @@ The palette is ink on paper. Hue is reserved for keyboard focus; every other rol
 
 The shell is a centered grid (`min(100%, 72rem)`) with a sticky `16rem` feature rail and a `minmax(0, 46rem)` ruled feed. The feed carries left/right Rule Ink borders on desktop and stacks four feature sections: Astronomy picture of the day, Near Earth today, Five recent discoveries, Five latest image briefs.
 
-The feed header is sticky (`4rem` min-height) and holds “Home” beside the device-local date and 24-hour clock. Each feature section uses a ruled heading band, then content rows divided by Rule Ink. Vertical padding is compact: about `0.85rem`–`1.25rem` inside rows and heading bands.
+The feed header is sticky (`4rem` min-height) and holds “What’s new today” beside the device-local date and 24-hour clock; archive pages replace that phrase with their archive title. Each feature section uses a ruled heading band, then content rows divided by Rule Ink. Vertical padding is compact: about `0.85rem`–`1.25rem` inside rows and heading bands.
 
 Responsive behavior:
 - At `64rem` and below, the rail collapses to a `5.25rem` icon-only column; brand name and nav labels hide.
@@ -166,7 +173,7 @@ Responsive behavior:
 - At `34rem` and below, the feed header stacks, fact and planet rows become single-column, and image thumbs tighten to `5.5rem × 4.25rem`.
 
 ### Named Rules
-**The Feature Rail Rule.** Desktop navigation is a sticky left rail with icon+label anchors; small screens move the same five anchors into a bottom bar. Do not invent a top marketing nav or hamburger drawer.
+**The Feature Rail Rule.** Desktop navigation is a sticky left rail with icon+label feature routes; small screens move the same five routes into a bottom bar. The Copernicus wordmark is the home control. Do not invent a top marketing nav or hamburger drawer.
 
 **The Ruled Feed Rule.** Content lives in one central column structured by horizontal rules, not by cards, side panels, or multi-column dashboards.
 
@@ -177,14 +184,14 @@ The system is fully flat. There are no shadows, gradients, glows, translucent pa
 ### Named Rules
 **The Printed Plane Rule.** Every element rests on the paper. Use borders, rules, and spacing for structure; never simulate floating interface layers.
 
-**The No Motion Rule.** The edition contains no animation or transitions (`scroll-behavior: auto`). State changes, including skip-link reveal and rail hover, are immediate.
+**The Bounded Motion Rule.** Motion appears only in the Near Earth orbit icon, APOD download flair, and calendar reveal; all honor reduced-motion preferences. Theme, skip-link, and navigation state changes remain immediate.
 
 ## Shapes
 
-Content geometry is square (`0` radius): plates, thumbs, section bands, and rows use straight edges. The feature rail is the exception that defines the chrome: a circular brand mark (`50%`) and pill-shaped nav items (`999px`) on desktop; mobile bottom items are square. Media crops are rectangular—APOD at `16 / 10` full width, image briefs at `7rem × 5.25rem` (`5.5rem × 4.25rem` on small phones). Plates and thumbs are borderless; structure comes from surrounding rules, not framed boxes.
+Content geometry is square (`0` radius): plates, thumbs, section bands, and rows use straight edges. The feature rail is the exception that defines the chrome: pill-shaped nav items (`999px`) on desktop; the wordmark is unframed and mobile bottom items are square. Media crops are rectangular—APOD at `16 / 10` full width, image briefs at `7rem × 5.25rem` (`5.5rem × 4.25rem` on small phones). Plates and thumbs are borderless; structure comes from surrounding rules, not framed boxes.
 
 ### Named Rules
-**The Rail Softness Rule.** Soft geometry (circle mark, pill anchors) belongs only to the feature rail. The feed itself stays square and ruled.
+**The Rail Softness Rule.** Soft geometry (pill anchors) belongs only to the desktop feature rail. The wordmark is plain type; the feed stays square and ruled.
 
 **The Borderless Plate Rule.** Full-width APOD and image thumbs sit without decorative frames; do not wrap evidence in cards or ink picture borders.
 
@@ -192,14 +199,14 @@ Content geometry is square (`0` radius): plates, thumbs, section bands, and rows
 
 ### Feature rail
 - **Character:** X-style sticky left navigation, not a masthead or app drawer.
-- **Brand:** Circular ink-outlined “C” mark beside Source Serif “Copernicus”.
-- **Items:** Five anchors—Home, APOD, Near Earth, Exoplanets, Image Library—each a stroke icon plus label, pill-shaped, `3rem` min-height.
+- **Brand:** Unframed Source Serif “Copernicus” wordmark linking to `/`.
+- **Items:** Five routes—APOD with the Flaticon camera, Near Earth with the orbit-dot motion, Exoplanets with the Flaticon Earth, Image Library with the Flaticon gallery, and Canvas with a line-art frame—each paired with a label in a pill-shaped, `3rem`-high item.
 - **Hover:** Faint Ink wash; no lift or color shift.
 - **Responsive:** Icon-only mid widths; fixed bottom bar with visible labels below `48rem`.
 
 ### Feed header
 - **Character:** Sticky issue strip for the reading column.
-- **Structure:** Serif “Home” baseline-aligned with muted local date and 24-hour time (`hourCycle: h23`), paper background, bottom Rule Ink.
+- **Structure:** Serif “What’s new today” (or the current archive title) baseline-aligned with muted local date and 24-hour time (`hourCycle: h23`), paper background, bottom Rule Ink.
 - **Behavior:** Updates on the client about every 30 seconds; placeholder reads “Local date and time” before hydration.
 
 ### Section heading
@@ -235,14 +242,14 @@ Content geometry is square (`0` radius): plates, thumbs, section bands, and rows
 - **Do** keep Cool Paper (`#FDFDFC`) as the continuous field and Press Ink (`#111111`) as the only editorial ink.
 - **Do** express secondary hierarchy with muted (`0.64`), rule (`0.16`), and faint (`0.08`) alpha roles of ink.
 - **Do** pair Source Serif 4 editorial titles with Source Sans 3 reading and navigation.
-- **Do** use the sticky left feature rail (bottom bar on small screens) for same-page anchors.
+- **Do** use the sticky left feature rail (bottom bar on small screens) for dedicated archive routes; use the wordmark for home.
 - **Do** lead the feed with sticky local date/24-hour time, then full-width APOD, Near Earth facts, five exoplanets, and five image briefs.
 - **Do** attach plain-language call-outs to Near Earth figures and keep provenance on every section and media item.
 - **Do** preserve the blue keyboard focus ring and immediate skip-link behavior.
 
 ### Don't:
 - **Don't** reintroduce warm cream paper, measure green, GIBS / Earth observation plates, deck copy, cards, or decorative color.
-- **Don't** add shadows, gradients, glow, glass, or motion/animation.
+- **Don't** add shadows, gradients, glow, glass, or motion beyond the three named exceptions.
 - **Don't** add kickers, eyebrows, slogans, promotional copy, or dashboard chrome.
 - **Don't** frame APOD or thumbs as bordered cards or floating media tiles.
 - **Don't** turn the edition into a landing page, endpoint catalog, or multi-panel analytics shell.

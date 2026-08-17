@@ -20,15 +20,18 @@ The product publishes evidence as an almanac-style edition instead of offering a
 
 ## Operating Context
 
-Readers open the site to today's issue. A left feature menu provides direct same-page access to APOD, Near Earth, Exoplanets, and the Image Library. The displayed date and 24-hour time follow the reader's device locale and time zone.
+Readers open the site to today's issue. A left feature menu opens dedicated APOD, Near Earth, Exoplanets, Image Library, and Canvas pages; the Copernicus wordmark returns to the issue. The displayed date and 24-hour time follow the reader's device locale and time zone.
 
 ## Capabilities and Constraints
 
 - Publish only from APOD, Near Earth Objects, NASA Image Library, and Exoplanet Archive.
 - English only for the first edition.
 - Automatic daily front page; no separate marketing landing page.
+- Dedicated archive pages preserve the same publication shell and load large catalogs in small batches.
 - Keep the Next.js web stack.
-- Interface must stay minimal and contain no animations.
+- Interface stays minimal; motion is limited to the Near Earth orbit icon, APOD download hover, and calendar reveal, with reduced-motion fallbacks.
+- Readers can switch between the paper-light and ink-dark themes from the issue header.
+- Canvas is a coming-soon creative workspace for composing with NASA imagery.
 - Do not fabricate news copy, quotes, or scientific claims beyond what the feeds provide.
 
 ## Brand Commitments
