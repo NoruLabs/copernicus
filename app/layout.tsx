@@ -1,17 +1,25 @@
 ﻿import type { Metadata } from "next";
-import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const sourceSans = Source_Sans_3({
+const sourceSans = localFont({
   variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  display: "swap",
+  src: [
+    { path: "../public/source-sans-400.ttf", weight: "400" },
+    { path: "../public/source-sans-600.ttf", weight: "600" },
+    { path: "../public/source-sans-700.ttf", weight: "700" },
+  ],
 });
 
-const sourceSerif = Source_Serif_4({
+const sourceSerif = localFont({
   variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  display: "swap",
+  src: [
+    { path: "../public/source-serif-400.ttf", weight: "400" },
+    { path: "../public/source-serif-600.ttf", weight: "600" },
+    { path: "../public/source-serif-700.ttf", weight: "700" },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -33,16 +41,26 @@ FORM: The Ephemeris Ledger; pick over assigned Wire Desk; seed c922ac22.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 -->`;
 
+const themeScript = `
+  try {
+    const stored = localStorage.getItem("copernicus-theme");
+    const dark = stored === "dark" || (!stored && matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.classList.toggle("dark", dark);
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", dark ? "#111111" : "#FDFDFC");
+  } catch {}
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#FDFDFC" />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className={`${sourceSans.variable} ${sourceSerif.variable}`}>
         <div
