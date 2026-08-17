@@ -1,44 +1,38 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-16T22:41:00.000Z",
+  "generatedAt": "2026-08-17T00:00:00.000Z",
   "title": "Design System: Copernicus",
   "extensions": {
     "colorMeta": {
       "paper": {
         "role": "neutral",
-        "displayName": "Almanac Paper",
-        "canonical": "#f7f5ee",
-        "tonalRamp": ["#282721", "#49473d", "#6d6a5d", "#918e80", "#b4b1a5", "#d3d0c6", "#e8e5dc", "#f7f5ee"]
+        "displayName": "Cool Paper",
+        "canonical": "#FDFDFC",
+        "tonalRamp": ["#1a1a19", "#3d3d3b", "#636361", "#8a8a87", "#b1b1ae", "#d4d4d1", "#ebebe9", "#FDFDFC"]
       },
       "ink": {
         "role": "neutral",
-        "displayName": "Ledger Ink",
-        "canonical": "#20231f",
-        "tonalRamp": ["#20231f", "#353a34", "#4d534b", "#666d64", "#81887e", "#9fa59c", "#bec2bb", "#e0e2dd"]
+        "displayName": "Press Ink",
+        "canonical": "#111111",
+        "tonalRamp": ["#111111", "#2b2b2b", "#454545", "#5f5f5f", "#7a7a7a", "#9a9a9a", "#c0c0c0", "#e6e6e6"]
       },
       "muted": {
         "role": "neutral",
-        "displayName": "Muted Notation",
-        "canonical": "#5a6158",
-        "tonalRamp": ["#1b1e1a", "#30352f", "#454b44", "#5a6158", "#737a71", "#90968d", "#afb4ac", "#d0d3cd"]
+        "displayName": "Muted Ink",
+        "canonical": "rgba(17, 17, 17, 0.64)",
+        "tonalRamp": ["#111111", "#2e2e2e", "#4a4a4a", "#666666", "#828282", "#a3a3a3", "#c7c7c7", "#e8e8e8"]
+      },
+      "faint": {
+        "role": "neutral",
+        "displayName": "Faint Ink",
+        "canonical": "rgba(17, 17, 17, 0.08)",
+        "tonalRamp": ["#111111", "#333333", "#555555", "#777777", "#999999", "#bbbbbb", "#dddddd", "#f5f5f5"]
       },
       "rule": {
         "role": "neutral",
-        "displayName": "Engraved Rule",
-        "canonical": "#c8ccc2",
-        "tonalRamp": ["#30332e", "#4e534b", "#6d7369", "#8d9388", "#abb0a6", "#c8ccc2", "#dde0d8", "#f0f1ec"]
-      },
-      "measure": {
-        "role": "primary",
-        "displayName": "Measure Green",
-        "canonical": "#35564a",
-        "tonalRamp": ["#14201c", "#20342c", "#2a453b", "#35564a", "#477263", "#668e7e", "#96b1a4", "#d5e0da"]
-      },
-      "surface": {
-        "role": "neutral",
-        "displayName": "Plate White",
-        "canonical": "#ffffff",
-        "tonalRamp": ["#1a1a1a", "#404040", "#666666", "#8c8c8c", "#b3b3b3", "#d9d9d9", "#f0f0f0", "#ffffff"]
+        "displayName": "Rule Ink",
+        "canonical": "rgba(17, 17, 17, 0.16)",
+        "tonalRamp": ["#111111", "#303030", "#505050", "#707070", "#909090", "#b0b0b0", "#d0d0d0", "#efefef"]
       },
       "focus": {
         "role": "tertiary",
@@ -49,114 +43,127 @@
     },
     "typographyMeta": {
       "display": {
-        "displayName": "Masthead Display",
-        "purpose": "The Copernicus publication mark only."
+        "displayName": "Brand Display",
+        "purpose": "Sidebar Copernicus wordmark only."
       },
       "headline": {
-        "displayName": "Plate Headline",
-        "purpose": "The lead astronomical plate title."
+        "displayName": "Story Headline",
+        "purpose": "APOD title and large Near Earth fact values."
       },
       "title": {
-        "displayName": "Ledger Title",
-        "purpose": "Ephemeris, section headings, and record names."
+        "displayName": "Section Title",
+        "purpose": "Feed header, feature headings, and record names."
       },
       "body": {
         "displayName": "Reading Body",
-        "purpose": "Decks, explanations, captions, metadata, and colophon."
+        "purpose": "Explanations, call-outs, descriptions, and colophon."
       },
       "label": {
-        "displayName": "Ledger Label",
-        "purpose": "Compact source names and measurement labels."
+        "displayName": "Source Label",
+        "purpose": "Uppercase source stamps, meta lines, local time, and nav labels."
       }
     },
     "shadows": [],
     "motion": [],
     "breakpoints": [
       {
-        "name": "folio-stack",
-        "value": "56rem",
-        "purpose": "Lead folio and lower edition grids become one reading column."
+        "name": "rail-icons",
+        "value": "64rem",
+        "purpose": "Feature rail collapses to icon-only sticky column."
       },
       {
-        "name": "mobile",
-        "value": "37rem",
-        "purpose": "Tighter edition inset, stacked masthead, and single-column discovery records."
+        "name": "bottom-nav",
+        "value": "48rem",
+        "purpose": "Feature rail becomes fixed bottom navigation; feed loses side rules."
+      },
+      {
+        "name": "narrow",
+        "value": "34rem",
+        "purpose": "Feed header stacks; fact and planet rows become single column."
       }
     ],
     "accessibility": [
       {
         "name": "focus-visible",
         "value": "outline: 2px solid #2458c6; outline-offset: 3px",
-        "purpose": "Keyboard focus on links and buttons."
+        "purpose": "Keyboard focus on links and navigation anchors."
       },
       {
         "name": "skip-to-content",
         "value": "off-canvas until focus; immediate reveal",
-        "purpose": "Bypasses the edition masthead and begins at main content."
+        "purpose": "Bypasses the feature rail and begins at main content."
       },
       {
         "name": "selection",
-        "value": "color: #f7f5ee; background: #20231f",
+        "value": "color: #FDFDFC; background: #111111",
         "purpose": "Printed ink inversion for selected text."
       }
     ]
   },
   "components": [
     {
-      "name": "Masthead",
+      "name": "Feature Rail",
       "kind": "nav",
-      "refersTo": "masthead",
-      "description": "Dated publication mark and concise edition deck above an engraved rule.",
-      "html": "<header class=\"ds-masthead\"><div class=\"ds-masthead-top\"><a href=\"/\" class=\"ds-brand\">Copernicus</a><p class=\"ds-dateline\">Sunday, August 16, 2026</p></div><p class=\"ds-deck\">Today's NASA edition. Imagery and measurements from verified feeds, printed as one almanac.</p></header>",
-      "css": ".ds-masthead { display: grid; gap: .75rem; padding-bottom: 1rem; border-bottom: 2px solid var(--ink, #20231f); color: var(--ink, #20231f); } .ds-masthead-top { display: flex; gap: 1rem; align-items: baseline; justify-content: space-between; } .ds-brand { color: inherit; font-family: \"Source Serif 4\", Georgia, serif; font-size: clamp(2.4rem, 7vw, 4.5rem); font-weight: 700; letter-spacing: -.03em; line-height: .92; text-decoration: none; } .ds-dateline { margin: 0; color: var(--muted, #5a6158); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .875rem; font-variant-numeric: tabular-nums; text-align: right; } .ds-deck { max-width: 58ch; margin: 0; color: var(--muted, #5a6158); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: 1rem; line-height: 1.55; } .ds-brand:focus-visible { outline: 2px solid var(--focus, #2458c6); outline-offset: 3px; }"
+      "refersTo": "feature-rail-item",
+      "description": "Sticky left X-style rail with circular brand mark and pill icon+label anchors.",
+      "html": "<aside class=\"ds-rail\"><a class=\"ds-brand\" href=\"#home\" aria-label=\"Copernicus home\"><span class=\"ds-mark\">C</span><span>Copernicus</span></a><nav class=\"ds-nav\" aria-label=\"Features\"><a class=\"ds-nav-item\" href=\"#home\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\" d=\"m3.5 10 8.5-7 8.5 7\"/><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\" d=\"M5.5 9v11h13V9M9.5 20v-6h5v6\"/></svg><span>Home</span></a><a class=\"ds-nav-item\" href=\"#apod\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" cx=\"12\" cy=\"12\" r=\"8.5\"/><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\" d=\"m12 6 .8 3.2L16 10l-3.2.8L12 14l-.8-3.2L8 10l3.2-.8L12 6Z\"/></svg><span>APOD</span></a></nav></aside>",
+      "css": ".ds-rail { display: flex; flex-direction: column; align-items: flex-start; width: 16rem; padding: 1.25rem 1.25rem 2rem; color: var(--ink, #111111); background: var(--paper, #FDFDFC); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; } .ds-brand { display: flex; gap: .75rem; align-items: center; min-height: 3rem; margin-bottom: 1.4rem; color: inherit; font-family: \"Source Serif 4\", Georgia, serif; font-size: 1.35rem; font-weight: 700; text-decoration: none; } .ds-mark { display: grid; width: 2.25rem; height: 2.25rem; place-items: center; border: 1px solid var(--ink, #111111); border-radius: 50%; font-size: 1rem; } .ds-nav { display: grid; gap: .35rem; width: 100%; } .ds-nav-item { display: flex; gap: 1rem; align-items: center; min-height: 3rem; padding: .55rem .7rem; border-radius: 999px; color: inherit; font-size: 1rem; font-weight: 600; text-decoration: none; } .ds-nav-item svg { width: 1.4rem; height: 1.4rem; flex: 0 0 auto; } .ds-nav-item:hover { background: var(--faint, rgba(17, 17, 17, .08)); } .ds-nav-item:focus-visible, .ds-brand:focus-visible { outline: 2px solid var(--focus, #2458c6); outline-offset: 3px; }"
     },
     {
-      "name": "Lead Plate",
-      "kind": "card",
-      "refersTo": "plate",
-      "description": "Bordered lead image with editorial title, provenance, and explanation.",
-      "html": "<article class=\"ds-plate\"><div class=\"ds-plate-frame\"><div class=\"ds-plate-image\" role=\"img\" aria-label=\"Astronomy picture plate\"></div></div><h1>Milky Way over Yellowstone</h1><p class=\"ds-note\">NASA Astronomy Picture of the Day · 2026-08-16 · Credit: Dave Lane</p><p class=\"ds-explanation\">The day's verified image is presented as the edition's primary visual evidence.</p></article>",
-      "css": ".ds-plate { display: grid; gap: .85rem; color: var(--ink, #20231f); } .ds-plate-frame { overflow: hidden; border: 1px solid var(--ink, #20231f); background: var(--surface, #fff); } .ds-plate-image { width: 100%; aspect-ratio: 16 / 10; background: linear-gradient(145deg, #20231f, #35564a); } .ds-plate h1 { margin: 0; font-family: \"Source Serif 4\", Georgia, serif; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.15; } .ds-note, .ds-explanation { margin: 0; color: var(--muted, #5a6158); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .95rem; line-height: 1.6; }"
+      "name": "Mobile Bottom Nav",
+      "kind": "nav",
+      "refersTo": "feature-rail-item",
+      "description": "Fixed five-anchor bottom bar used at and below 48rem.",
+      "html": "<nav class=\"ds-bottom-nav\" aria-label=\"Features\"><a class=\"ds-bottom-item\" href=\"#home\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\" d=\"m3.5 10 8.5-7 8.5 7\"/><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\" d=\"M5.5 9v11h13V9M9.5 20v-6h5v6\"/></svg><span>Home</span></a><a class=\"ds-bottom-item\" href=\"#apod\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" cx=\"12\" cy=\"12\" r=\"8.5\"/><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\" d=\"m12 6 .8 3.2L16 10l-3.2.8L12 14l-.8-3.2L8 10l3.2-.8L12 6Z\"/></svg><span>APOD</span></a><a class=\"ds-bottom-item\" href=\"#near-earth\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" cx=\"12\" cy=\"12\" r=\"3\"/><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.8\" d=\"M4 14.5C6.5 8.2 13.5 4 20 5.5\"/><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.8\" d=\"M5 18c5.5 1.7 11.2-.7 14-5\"/></svg><span>Near Earth</span></a><a class=\"ds-bottom-item\" href=\"#exoplanets\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" cx=\"12\" cy=\"12\" r=\"5\"/><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-width=\"1.8\" d=\"M3 14.5c2.8 2.3 8.3 2.5 13.2.3 4.3-1.9 5.9-4.7 3.6-6.2-1.4-.9-3.8-.8-6.3.1\"/></svg><span>Exoplanets</span></a><a class=\"ds-bottom-item\" href=\"#images\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" x=\"3.5\" y=\"4\" width=\"17\" height=\"16\"/><circle fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" cx=\"9\" cy=\"9\" r=\"1.5\"/><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\" d=\"m5.5 17 4.2-4 3 2.6 2.6-2.2 3.2 3.6\"/></svg><span>Image Library</span></a></nav>",
+      "css": ".ds-bottom-nav { display: grid; grid-template-columns: repeat(5, 1fr); width: 100%; border-top: 1px solid var(--rule, rgba(17, 17, 17, .16)); background: var(--paper, #FDFDFC); color: var(--ink, #111111); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; } .ds-bottom-item { display: grid; gap: .18rem; justify-items: center; min-height: 4rem; padding: .55rem .2rem; color: inherit; font-size: .68rem; font-weight: 600; text-decoration: none; border-radius: 0; } .ds-bottom-item svg { width: 1.25rem; height: 1.25rem; } .ds-bottom-item:hover { background: var(--faint, rgba(17, 17, 17, .08)); } .ds-bottom-item:focus-visible { outline: 2px solid var(--focus, #2458c6); outline-offset: 3px; }"
     },
     {
-      "name": "Ephemeris Ledger",
+      "name": "Feed Header",
       "kind": "custom",
-      "refersTo": "ledger-row",
-      "description": "Daily measurements in tabular ruled rows with attached plain-language call-outs.",
-      "html": "<aside class=\"ds-ephemeris\"><h2>Ephemeris</h2><table class=\"ds-ledger\"><tbody><tr><th scope=\"row\">Near-Earth objects</th><td>1<span>Objects with a close approach dated 2026-08-16.</span></td></tr><tr><th scope=\"row\">Closest approach</th><td>48 million km<span>417874 (2007 NC5) at 40.0 km/s.</span></td></tr><tr><th scope=\"row\">Recent exoplanets</th><td>6<span>Newest confirmed planets pulled for this edition.</span></td></tr></tbody></table></aside>",
-      "css": ".ds-ephemeris { border-top: 1px solid var(--ink, #20231f); color: var(--ink, #20231f); } .ds-ephemeris h2 { margin: 0 0 .85rem; font-family: \"Source Serif 4\", Georgia, serif; font-size: 1.15rem; font-weight: 700; letter-spacing: -.01em; } .ds-ledger { width: 100%; border-collapse: collapse; font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; } .ds-ledger th, .ds-ledger td { padding: .7rem 0; border-bottom: 1px solid var(--rule, #c8ccc2); text-align: left; vertical-align: top; } .ds-ledger th { width: 42%; color: var(--muted, #5a6158); font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; } .ds-ledger td { color: var(--measure, #35564a); font-size: .95rem; font-variant-numeric: tabular-nums; font-weight: 600; } .ds-ledger td span { display: block; margin-top: .2rem; color: var(--muted, #5a6158); font-size: .8rem; font-weight: 400; line-height: 1.45; }"
+      "refersTo": "feed-header",
+      "description": "Sticky Home title with device-local date and 24-hour time.",
+      "html": "<header class=\"ds-feed-header\"><h1>Home</h1><time class=\"ds-local-time\" datetime=\"2026-08-16T23:56:00.000Z\">Sunday, August 16, 2026 at 18:56</time></header>",
+      "css": ".ds-feed-header { display: flex; gap: 1rem; align-items: baseline; justify-content: space-between; min-height: 4rem; padding: .85rem 1.25rem; border-bottom: 1px solid var(--rule, rgba(17, 17, 17, .16)); background: var(--paper, #FDFDFC); color: var(--ink, #111111); } .ds-feed-header h1 { margin: 0; font-family: \"Source Serif 4\", Georgia, serif; font-size: 1.3rem; font-weight: 700; } .ds-local-time { color: var(--muted, rgba(17, 17, 17, .64)); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .82rem; font-variant-numeric: tabular-nums; text-align: right; }"
     },
     {
       "name": "Section Heading",
       "kind": "custom",
       "refersTo": "section-heading",
-      "description": "Serif section title and compact source attribution over an ink rule.",
-      "html": "<div class=\"ds-section-head\"><h2>Recent discoveries</h2><p>NASA Exoplanet Archive</p></div>",
-      "css": ".ds-section-head { display: flex; gap: 1rem; align-items: baseline; justify-content: space-between; margin-bottom: .85rem; padding-bottom: .55rem; border-bottom: 1px solid var(--ink, #20231f); } .ds-section-head h2 { margin: 0; color: var(--ink, #20231f); font-family: \"Source Serif 4\", Georgia, serif; font-size: 1.15rem; font-weight: 700; letter-spacing: -.01em; } .ds-section-head p { margin: 0; color: var(--muted, #5a6158); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .75rem; font-variant-numeric: tabular-nums; letter-spacing: .03em; text-transform: uppercase; }"
+      "description": "Serif feature title and uppercase source stamp over a rule.",
+      "html": "<div class=\"ds-section-head\"><h2>Astronomy picture of the day</h2><p>NASA APOD</p></div>",
+      "css": ".ds-section-head { display: flex; gap: 1rem; align-items: baseline; justify-content: space-between; padding: 1rem 1.25rem .75rem; border-bottom: 1px solid var(--rule, rgba(17, 17, 17, .16)); color: var(--ink, #111111); } .ds-section-head h2 { margin: 0; font-family: \"Source Serif 4\", Georgia, serif; font-size: 1.15rem; font-weight: 700; letter-spacing: -.01em; } .ds-section-head p { margin: 0; color: var(--muted, rgba(17, 17, 17, .64)); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }"
     },
     {
-      "name": "Discovery Ledger Row",
+      "name": "APOD Story",
       "kind": "custom",
-      "refersTo": "ledger-row",
-      "description": "Exoplanet discovery record with source metadata and aligned measured figure.",
-      "html": "<article class=\"ds-discovery\"><div><h3>XO-2 S d</h3><p>Host XO-2 S · Radial Velocity · 2025</p></div><strong>13.00 R⊕</strong></article>",
-      "css": ".ds-discovery { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid var(--rule, #c8ccc2); } .ds-discovery h3 { margin: 0 0 .25rem; color: var(--ink, #20231f); font-family: \"Source Serif 4\", Georgia, serif; font-size: 1rem; font-weight: 700; } .ds-discovery p { margin: 0; color: var(--muted, #5a6158); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .82rem; line-height: 1.45; } .ds-discovery strong { color: var(--measure, #35564a); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .9rem; font-variant-numeric: tabular-nums; font-weight: 700; text-align: right; white-space: nowrap; }"
+      "refersTo": "section-heading",
+      "description": "Full-width borderless plate with serif title, credit meta, and explanation.",
+      "html": "<article class=\"ds-apod\"><div class=\"ds-plate\" role=\"img\" aria-label=\"Astronomy picture of the day\"></div><div class=\"ds-story\"><h3>Milky Way over Yellowstone</h3><p class=\"ds-meta\">2026-08-16 · Credit: Dave Lane</p><p class=\"ds-explanation\">The day's verified image is presented as the edition's primary visual evidence.</p></div></article>",
+      "css": ".ds-apod { color: var(--ink, #111111); background: var(--paper, #FDFDFC); } .ds-plate { width: 100%; aspect-ratio: 16 / 10; background: #111111; } .ds-story { display: grid; gap: .55rem; padding: 1rem 1.25rem 1.25rem; } .ds-story h3 { margin: 0; font-family: \"Source Serif 4\", Georgia, serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.12; } .ds-meta, .ds-explanation { margin: 0; color: var(--muted, rgba(17, 17, 17, .64)); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; } .ds-meta { font-size: .82rem; line-height: 1.45; } .ds-explanation { font-size: .95rem; line-height: 1.6; }"
+    },
+    {
+      "name": "Near Earth Fact Row",
+      "kind": "custom",
+      "refersTo": "fact-row",
+      "description": "Ruled plain-language fact with large ink figure and explanatory copy.",
+      "html": "<article class=\"ds-fact\"><p class=\"ds-fact-value\">1</p><div><h3>Objects making a close approach</h3><p>NASA lists these asteroids and comets near Earth for 2026-08-16.</p></div></article>",
+      "css": ".ds-fact { display: grid; grid-template-columns: minmax(7rem, .35fr) minmax(0, 1fr); gap: 1.25rem; padding: 1.15rem 1.25rem; border-bottom: 1px solid var(--rule, rgba(17, 17, 17, .16)); color: var(--ink, #111111); background: var(--paper, #FDFDFC); } .ds-fact-value { margin: 0; font-family: \"Source Serif 4\", Georgia, serif; font-size: clamp(1.65rem, 4vw, 2.25rem); font-variant-numeric: tabular-nums; font-weight: 700; letter-spacing: -.02em; line-height: 1; } .ds-fact h3 { margin: 0 0 .25rem; font-family: \"Source Serif 4\", Georgia, serif; font-size: 1rem; font-weight: 700; } .ds-fact p:not(.ds-fact-value) { margin: 0; color: var(--muted, rgba(17, 17, 17, .64)); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .9rem; line-height: 1.5; }"
+    },
+    {
+      "name": "Exoplanet Row",
+      "kind": "custom",
+      "refersTo": "fact-row",
+      "description": "One of five ruled discovery rows with host metadata and aligned figure.",
+      "html": "<article class=\"ds-planet\"><div><h3>XO-2 S d</h3><p class=\"ds-meta\">Orbits XO-2 S · Found by Radial Velocity · Announced 2025</p></div><p class=\"ds-figure\">13.00× Earth's radius · 490 light-years away</p></article>",
+      "css": ".ds-planet { display: grid; grid-template-columns: minmax(0, 1fr) minmax(10rem, auto); gap: 1rem; align-items: baseline; padding: 1rem 1.25rem; border-bottom: 1px solid var(--rule, rgba(17, 17, 17, .16)); color: var(--ink, #111111); background: var(--paper, #FDFDFC); } .ds-planet h3 { margin: 0 0 .25rem; font-family: \"Source Serif 4\", Georgia, serif; font-size: 1rem; font-weight: 700; } .ds-meta { margin: 0; color: var(--muted, rgba(17, 17, 17, .64)); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .82rem; line-height: 1.45; } .ds-figure { margin: 0; font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .85rem; font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }"
     },
     {
       "name": "Image Brief Row",
       "kind": "custom",
-      "refersTo": "ledger-row",
-      "description": "Square NASA thumbnail paired with a compact editorial title and date.",
-      "html": "<article class=\"ds-image-row\"><div class=\"ds-thumb\" role=\"img\" aria-label=\"NASA image thumbnail\"></div><div><h3>The Earth &amp; Moon</h3><p>Aug 16, 2026</p></div></article>",
-      "css": ".ds-image-row { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 1rem; align-items: center; padding: .85rem 0; border-bottom: 1px solid var(--rule, #c8ccc2); } .ds-thumb { width: 4.5rem; height: 4.5rem; border: 1px solid var(--rule, #c8ccc2); background: var(--surface, #fff); } .ds-image-row h3 { margin: 0 0 .25rem; color: var(--ink, #20231f); font-family: \"Source Serif 4\", Georgia, serif; font-size: 1rem; font-weight: 700; } .ds-image-row p { margin: 0; color: var(--muted, #5a6158); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .82rem; line-height: 1.45; }"
-    },
-    {
-      "name": "Earth Observation Plate",
-      "kind": "card",
-      "refersTo": "plate",
-      "description": "Square Earth imagery plate with a compact date and source caption.",
-      "html": "<figure class=\"ds-earth\"><div class=\"ds-earth-image\" role=\"img\" aria-label=\"MODIS Terra true color\"></div><figcaption>MODIS Terra true color · 2026-08-14</figcaption></figure>",
-      "css": ".ds-earth { display: grid; gap: .75rem; margin: 0; } .ds-earth-image { width: 100%; aspect-ratio: 1; border: 1px solid var(--ink, #20231f); background: var(--surface, #fff); } .ds-earth figcaption { color: var(--muted, #5a6158); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .82rem; line-height: 1.45; }"
+      "refersTo": "image-brief",
+      "description": "One of five ruled library briefs with rectangular thumb and description.",
+      "html": "<article class=\"ds-image-row\"><div class=\"ds-thumb\" role=\"img\" aria-label=\"NASA image thumbnail\"></div><div><h3>The Earth &amp; Moon</h3><p class=\"ds-meta\">Aug 16, 2026</p><p class=\"ds-desc\">NASA did not provide a description for this image.</p></div></article>",
+      "css": ".ds-image-row { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 1rem; align-items: center; padding: .85rem 1.25rem; border-bottom: 1px solid var(--rule, rgba(17, 17, 17, .16)); color: var(--ink, #111111); background: var(--paper, #FDFDFC); } .ds-thumb { width: 7rem; height: 5.25rem; background: #111111; } .ds-image-row h3 { margin: 0 0 .25rem; font-family: \"Source Serif 4\", Georgia, serif; font-size: 1rem; font-weight: 700; } .ds-meta { margin: 0; color: var(--muted, rgba(17, 17, 17, .64)); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .82rem; line-height: 1.45; } .ds-desc { margin: .35rem 0 0; color: var(--muted, rgba(17, 17, 17, .64)); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .85rem; line-height: 1.45; }"
     },
     {
       "name": "Skip to Content",
@@ -164,83 +171,92 @@
       "refersTo": "skip-link",
       "description": "Square ink accessibility link revealed immediately on keyboard focus.",
       "html": "<a class=\"ds-skip\" href=\"#main-content\">Skip to content</a>",
-      "css": ".ds-skip { display: inline-block; padding: .75rem 1rem; color: var(--paper, #f7f5ee); background: var(--ink, #20231f); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .95rem; text-decoration: none; } .ds-skip:hover { color: var(--paper, #f7f5ee); background: var(--ink, #20231f); } .ds-skip:focus-visible { outline: 2px solid var(--focus, #2458c6); outline-offset: 3px; } .ds-skip:active { color: var(--paper, #f7f5ee); background: var(--ink, #20231f); }"
+      "css": ".ds-skip { display: inline-block; padding: .75rem 1rem; color: var(--paper, #FDFDFC); background: var(--ink, #111111); font-family: \"Source Sans 3\", \"Segoe UI\", sans-serif; font-size: .95rem; text-decoration: none; border-radius: 0; } .ds-skip:hover { color: var(--paper, #FDFDFC); background: var(--ink, #111111); } .ds-skip:focus-visible { outline: 2px solid var(--focus, #2458c6); outline-offset: 3px; } .ds-skip:active { color: var(--paper, #FDFDFC); background: var(--ink, #111111); }"
     }
   ],
   "narrative": {
     "northStar": "The Ephemeris Ledger",
-    "overview": "Copernicus is a daily astronomical almanac: evidence is printed, measured, ruled, and dated rather than wrapped in application chrome. Warm paper, near-black ink, restrained green measurements, serif authority, and compact sans-serif notation make the edition feel archival without becoming nostalgic theater.\n\nThe composition gives imagery and measurements equal authority. A masthead establishes the issue, the lead plate supplies the day’s visual evidence, and ephemeris and ledger patterns turn live NASA fields into readable records. The interface is flat, square, and still; interest comes from real imagery, typographic contrast, and engraved rules rather than decoration or motion.",
+    "overview": "Copernicus ships as a direct daily NASA feed: near-white paper, black ink, Source Serif / Source Sans, and ruled sections instead of a marketing landing page or dashboard shell. The Ephemeris Ledger world remains the product commitment, but the finished interface reads as a Twitter-like feature rail beside a central newspaper column—quiet, exact, and still.\n\nImagery and measurements share equal authority. A sticky left rail (bottom bar on small screens) jumps to APOD, Near Earth, Exoplanets, and Image Library. The feed opens with a sticky local date and 24-hour time, then a full-width astronomy picture, plain-language near-Earth facts, five exoplanet rows, and five image briefs. Structure comes from alpha ink rules and typography, never from decorative color, cards, or motion.",
     "keyCharacteristics": [
-      "Warm almanac paper with ink, muted notation, and pale rule hierarchy",
-      "Source Serif 4 for masthead and editorial titles; Source Sans 3 for reading and measurement",
-      "Square image plates bounded by fine ink strokes",
-      "Tabular ledger rows with deep green measure values and plain-language call-outs",
-      "Engraved horizontal rules organize the edition without cards or shadows",
-      "No animation, decorative dashboard chrome, kickers, or eyebrows"
+      "Near-white paper (#FDFDFC) and black ink (#111111) with muted/rule/faint alpha roles",
+      "Source Serif 4 for brand and editorial titles; Source Sans 3 for reading, metadata, and navigation labels",
+      "X-style sticky left feature rail with line icons and labels; mobile bottom navigation",
+      "Central ruled feed with sticky local date / 24-hour time header",
+      "Full-width APOD plate, plain-language Near Earth facts, five exoplanet rows, five image briefs",
+      "Flat, still surface: no animation, cards, GIBS, warm cream, measure green, deck copy, or decorative color"
     ],
     "rules": [
       {
-        "name": "The Measure Ink Rule",
-        "body": "Green belongs to measured evidence. Never spread it into broad fills, headings, badges, or ornamental accents.",
+        "name": "The Ink-Only Rule",
+        "body": "Editorial color is paper plus ink alphas. Do not reintroduce warm cream, measure green, or any decorative accent into the reading surface.",
         "section": "colors"
       },
       {
-        "name": "The Two-Rule Rule",
-        "body": "Major editorial divisions use ink; repeated interior records use the paler engraved rule.",
+        "name": "The Focus Exception Rule",
+        "body": "Focus Blue may appear only as a keyboard outline; it never brands sections, figures, or chrome.",
         "section": "colors"
       },
       {
         "name": "The Serif Authority Rule",
-        "body": "Serif type names the publication, plates, sections, and records; sans serif carries explanation, provenance, and measurement.",
+        "body": "Serif type names the brand, feed header, section titles, story titles, and quantitative figures; sans serif carries navigation, provenance, and explanation.",
         "section": "typography"
       },
       {
         "name": "The Tabular Evidence Rule",
-        "body": "Dates and quantitative figures use tabular numerals so ledger columns remain stable.",
+        "body": "Local time and quantitative figures use tabular numerals so columns and clocks stay stable.",
         "section": "typography"
       },
       {
-        "name": "The No Eyebrow Rule",
-        "body": "Do not add marketing kickers or decorative eyebrows above established headings. Provenance belongs in captions, datelines, or source lines.",
+        "name": "The No Deck Rule",
+        "body": "Do not add marketing decks, kickers, or eyebrows above established headings. Provenance sits in uppercase source stamps, meta lines, or attached plain-language call-outs.",
         "section": "typography"
       },
       {
-        "name": "The Plate-and-Ledger Rule",
-        "body": "On wide screens, the lead image and ephemeris share the folio; on narrow screens, preserve their order and stack them without changing their visual language.",
+        "name": "The Feature Rail Rule",
+        "body": "Desktop navigation is a sticky left rail with icon+label anchors; small screens move the same five anchors into a bottom bar. Do not invent a top marketing nav or hamburger drawer.",
+        "section": "layout"
+      },
+      {
+        "name": "The Ruled Feed Rule",
+        "body": "Content lives in one central column structured by horizontal rules, not by cards, side panels, or multi-column dashboards.",
         "section": "layout"
       },
       {
         "name": "The Printed Plane Rule",
-        "body": "Every element rests on the paper. Use borders and spacing for structure; never simulate floating interface layers.",
+        "body": "Every element rests on the paper. Use borders, rules, and spacing for structure; never simulate floating interface layers.",
         "section": "elevation"
       },
       {
         "name": "The No Motion Rule",
-        "body": "The edition contains no animation or transitions. State changes, including skip-link reveal, are immediate.",
+        "body": "The edition contains no animation or transitions (scroll-behavior: auto). State changes, including skip-link reveal and rail hover, are immediate.",
         "section": "elevation"
       },
       {
-        "name": "The Engraved Edge Rule",
-        "body": "Use crisp rectangular frames and horizontal rules. Do not introduce pills, rounded cards, circles, or ornamental containers.",
+        "name": "The Rail Softness Rule",
+        "body": "Soft geometry (circle mark, pill anchors) belongs only to the feature rail. The feed itself stays square and ruled.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Borderless Plate Rule",
+        "body": "Full-width APOD and image thumbs sit without decorative frames; do not wrap evidence in cards or ink picture borders.",
         "section": "shapes"
       }
     ],
     "dos": [
-      "Do use Almanac Paper as the continuous field, with Ledger Ink and Engraved Rule defining hierarchy.",
-      "Do pair Source Serif 4 editorial authority with Source Sans 3 reading clarity.",
-      "Do reserve Measure Green for numerical evidence and tabular figures.",
-      "Do treat NASA imagery as a bordered plate with source, date, and credit close by.",
-      "Do keep plain-language call-outs attached to every ephemeris figure.",
-      "Do preserve the 68rem edition measure and stack folio columns below 56rem.",
+      "Do keep Cool Paper (#FDFDFC) as the continuous field and Press Ink (#111111) as the only editorial ink.",
+      "Do express secondary hierarchy with muted (0.64), rule (0.16), and faint (0.08) alpha roles of ink.",
+      "Do pair Source Serif 4 editorial titles with Source Sans 3 reading and navigation.",
+      "Do use the sticky left feature rail (bottom bar on small screens) for same-page anchors.",
+      "Do lead the feed with sticky local date/24-hour time, then full-width APOD, Near Earth facts, five exoplanets, and five image briefs.",
+      "Do attach plain-language call-outs to Near Earth figures and keep provenance on every section and media item.",
       "Do preserve the blue keyboard focus ring and immediate skip-link behavior."
     ],
     "donts": [
-      "Don't add cards, shadows, gradients, glow, glass, or rounded containers.",
-      "Don't animate or transition any interface element.",
-      "Don't add kickers, eyebrows, slogans, promotional copy, or dashboard labels.",
-      "Don't use Measure Green as decoration or a broad background.",
-      "Don't detach provenance from the image or measurement it qualifies.",
-      "Don't turn the edition into a landing page, dashboard, endpoint register, or app shell."
+      "Don't reintroduce warm cream paper, measure green, GIBS / Earth observation plates, deck copy, cards, or decorative color.",
+      "Don't add shadows, gradients, glow, glass, or motion/animation.",
+      "Don't add kickers, eyebrows, slogans, promotional copy, or dashboard chrome.",
+      "Don't frame APOD or thumbs as bordered cards or floating media tiles.",
+      "Don't turn the edition into a landing page, endpoint catalog, or multi-panel analytics shell."
     ]
   }
 }
