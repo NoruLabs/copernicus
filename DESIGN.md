@@ -235,12 +235,12 @@ Content geometry is square (`0` radius): plates, thumbs, section bands, and rows
 
 ### Image brief rows
 - **Character:** Five latest library releases as compact ruled briefs.
-- **Structure:** Rectangular thumb, serif title, muted date, muted description (truncated near 220 characters in data).
+- **Structure:** Rectangular thumb, serif title, and muted date.
 
 ### Image Library
-- **Grid:** A masonry stream that requests the next 20 records before the reader reaches the end.
+- **Grid:** A globally date-sorted masonry stream, newest first, that requests the next 20 records before the reader reaches the end.
 - **Tile:** Image, title, date, publisher, and one icon-only external link. No description appears in the grid.
-- **Detail:** Clicking the image opens a native modal detail view with the full available description, keywords, and NASA Images link.
+- **Detail:** Clicking the image opens a native modal immediately, then loads the full available description and keywords without blocking the grid.
 
 ### Donation rail
 - **Character:** One quiet ruled line on wide screens, with no card, heading block, illustration, or supporting paragraph.

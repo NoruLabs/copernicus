@@ -185,6 +185,9 @@ export function ImageArchive({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(selected ?? null);
+  const [detailStatus, setDetailStatus] = useState<
+    "idle" | "loading" | "error"
+  >("idle");
   const dialogRef = useRef<HTMLDialogElement>(null);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const activeImage = useMemo(
@@ -240,6 +243,28 @@ export function ImageArchive({
 
   function closeDetail() {
     setActiveId(null);
+    setDetailStatus("idle");
+  }
+
+  async function openDetail(item: ImageRecord) {
+    setActiveId(item.id);
+    if (item.description !== null || item.keywords.length > 0) return;
+
+    setDetailStatus("loading");
+    try {
+      const response = await fetch(
+        `/api/archive/images?item=${encodeURIComponent(item.id)}`,
+        { cache: "force-cache" },
+      );
+      if (!response.ok) throw new Error();
+      const detail = (await response.json()) as ImageRecord;
+      setItems((current) =>
+        current.map((record) => (record.id === detail.id ? detail : record)),
+      );
+      setDetailStatus("idle");
+    } catch {
+      setDetailStatus("error");
+    }
   }
 
   return (
@@ -255,7 +280,7 @@ export function ImageArchive({
             <button
               aria-label={`View details for ${item.title}`}
               className="image-open"
-              onClick={() => setActiveId(item.id)}
+              onClick={() => void openDetail(item)}
               type="button"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -358,6 +383,14 @@ export function ImageArchive({
               {activeImage.description ? (
                 <p className="image-detail-description">
                   {activeImage.description}
+                </p>
+              ) : detailStatus === "loading" ? (
+                <p className="image-detail-description" role="status">
+                  Loading details
+                </p>
+              ) : detailStatus === "error" ? (
+                <p className="image-detail-description">
+                  More details could not be loaded.
                 </p>
               ) : null}
               {activeImage.keywords.length > 0 ? (

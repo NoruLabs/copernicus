@@ -1,4 +1,4 @@
-import { PageShell } from "../components/PageShell";
+import { PageShell } from "../../components/PageShell";
 
 export default function CanvasPage() {
   return (

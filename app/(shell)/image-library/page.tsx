@@ -1,9 +1,9 @@
-import { ImageArchive } from "../components/ArchiveLists";
-import { PageShell } from "../components/PageShell";
-import type { Batch, ImageRecord } from "../lib/archive";
-import { getImageBatch, getImageById } from "../lib/archive";
+import { ImageArchive } from "../../components/ArchiveLists";
+import { PageShell } from "../../components/PageShell";
+import type { Batch, ImageRecord } from "../../lib/archive";
+import { getImageBatch, getImageById } from "../../lib/archive";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export default async function ImageLibraryPage({
   searchParams,

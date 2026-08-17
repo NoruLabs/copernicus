@@ -1,9 +1,9 @@
-import { NeoArchive } from "../components/ArchiveLists";
-import { PageShell } from "../components/PageShell";
-import type { Batch, NeoRecord } from "../lib/archive";
-import { getNeoBatch, getNeoById } from "../lib/archive";
+import { NeoArchive } from "../../components/ArchiveLists";
+import { PageShell } from "../../components/PageShell";
+import type { Batch, NeoRecord } from "../../lib/archive";
+import { getNeoBatch, getNeoById } from "../../lib/archive";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export default async function NearEarthPage({
   searchParams,

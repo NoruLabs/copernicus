@@ -1,9 +1,9 @@
-import ColorFlairButton from "../../components/pixel-perfect/color-flair-button";
-import { ApodCalendar } from "../components/ApodCalendar";
-import { PageShell } from "../components/PageShell";
-import { getApod } from "../lib/archive";
+import ColorFlairButton from "../../../components/pixel-perfect/color-flair-button";
+import { ApodCalendar } from "../../components/ApodCalendar";
+import { PageShell } from "../../components/PageShell";
+import { getApod } from "../../lib/archive";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function ApodPage({
   searchParams,

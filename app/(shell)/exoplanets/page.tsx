@@ -1,9 +1,9 @@
-import { PlanetArchive } from "../components/ArchiveLists";
-import { PageShell } from "../components/PageShell";
-import type { Batch, PlanetRecord } from "../lib/archive";
-import { getPlanetBatch } from "../lib/archive";
+import { PlanetArchive } from "../../components/ArchiveLists";
+import { PageShell } from "../../components/PageShell";
+import type { Batch, PlanetRecord } from "../../lib/archive";
+import { getPlanetBatch } from "../../lib/archive";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export default async function ExoplanetsPage({
   searchParams,

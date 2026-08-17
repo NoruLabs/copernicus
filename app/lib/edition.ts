@@ -1,4 +1,5 @@
 import "server-only";
+import { getPlanetBatch } from "./archive";
 
 const NASA_API_KEY = process.env.NASA_API_KEY || "DEMO_KEY";
 
@@ -53,10 +54,14 @@ function formatDate(date: Date) {
   return date.toISOString().slice(0, 10);
 }
 
-async function fetchJson(url: string, init?: RequestInit) {
+async function fetchJson(
+  url: string,
+  init?: RequestInit,
+  revalidateSeconds = 300,
+) {
   const response = await fetch(url, {
     ...init,
-    cache: "no-store",
+    next: { revalidate: revalidateSeconds },
   });
 
   if (!response.ok) {
@@ -69,6 +74,8 @@ async function fetchJson(url: string, init?: RequestInit) {
 async function loadApod(): Promise<EditionApod> {
   const data = await fetchJson(
     `https://api.nasa.gov/planetary/apod?api_key=${encodeURIComponent(NASA_API_KEY)}`,
+    undefined,
+    60,
   );
 
   if (!data?.title || !data?.date || !data?.url) {
@@ -136,23 +143,14 @@ async function loadNeo(editionDate: string): Promise<EditionNeo> {
 }
 
 async function loadPlanets(): Promise<EditionPlanet[]> {
-  const query =
-    "SELECT TOP 5 pl_name, hostname, disc_year, pl_rade, sy_dist, discoverymethod, disc_pubdate FROM pscomppars WHERE disc_year IS NOT NULL AND disc_pubdate IS NOT NULL ORDER BY disc_pubdate DESC, pl_name ASC";
-  const data = await fetchJson(
-    `https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=${encodeURIComponent(query)}&format=json`,
-  );
-
-  if (!Array.isArray(data)) {
-    throw new Error("Exoplanet payload incomplete");
-  }
-
-  return data.map((row) => ({
-    name: String(row.pl_name ?? "Unknown"),
-    host: String(row.hostname ?? "Unknown host"),
-    year: typeof row.disc_year === "number" ? row.disc_year : null,
-    radiusEarth: typeof row.pl_rade === "number" ? row.pl_rade : null,
-    distancePc: typeof row.sy_dist === "number" ? row.sy_dist : null,
-    method: row.discoverymethod ? String(row.discoverymethod) : null,
+  const batch = await getPlanetBatch();
+  return batch.items.slice(0, 5).map((planet) => ({
+    name: planet.name,
+    host: planet.host,
+    year: planet.discoveryYear,
+    radiusEarth: planet.radiusEarth,
+    distancePc: planet.distancePc,
+    method: planet.discoveryMethod,
   }));
 }
 
