@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { DonationPanel } from "./DonationPanel";
 import { HeaderTools } from "./HeaderTools";
 import { Sidebar } from "./Sidebar";
 
@@ -19,6 +20,7 @@ export function PageShell({
         </header>
         {children}
       </main>
+      <DonationPanel />
     </div>
   );
 }

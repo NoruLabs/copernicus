@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import OrbitDotMotion from "../../components/pixel-perfect/orbit-dot-motion";
 
 type IconName = "apod" | "near" | "planets" | "images" | "canvas";
@@ -11,6 +14,28 @@ const items: Array<{ href: string; label: string; icon: IconName }> = [
   { href: "/image-library", label: "Image Library", icon: "images" },
   { href: "/canvas", label: "Canvas", icon: "canvas" },
 ];
+
+function CopernicusIcon() {
+  return (
+    <span aria-hidden="true" className="copernicus-icon">
+      <Image
+        alt=""
+        height={400}
+        sizes="(max-width: 48rem) 32px, 48px"
+        src="/copernicus.png"
+        width={400}
+      />
+      <Image
+        alt=""
+        className="copernicus-icon-dark"
+        height={400}
+        sizes="(max-width: 48rem) 32px, 48px"
+        src="/copernicus_black.png"
+        width={400}
+      />
+    </span>
+  );
+}
 
 function NavIcon({ name }: { name: IconName }) {
   if (name === "near") return <OrbitDotMotion />;
@@ -43,15 +68,27 @@ function NavIcon({ name }: { name: IconName }) {
 }
 
 export function Sidebar() {
+  const pathname = usePathname();
+
   return (
     <aside className="sidebar">
       <Link className="sidebar-brand" href="/" aria-label="Copernicus home">
-        <span className="brand-name">Copernicus</span>
+        <CopernicusIcon />
       </Link>
 
       <nav className="feature-nav" aria-label="Features">
+        <Link
+          aria-current={pathname === "/" ? "page" : undefined}
+          aria-label="Copernicus home"
+          className="nav-item mobile-home"
+          href="/"
+        >
+          <CopernicusIcon />
+          <span>Home</span>
+        </Link>
         {items.map((item) => (
-          <a
+          <Link
+            aria-current={pathname === item.href ? "page" : undefined}
             aria-label={item.label}
             className="nav-item"
             href={item.href}
@@ -59,7 +96,7 @@ export function Sidebar() {
           >
             <NavIcon name={item.icon} />
             <span>{item.label}</span>
-          </a>
+          </Link>
         ))}
       </nav>
     </aside>

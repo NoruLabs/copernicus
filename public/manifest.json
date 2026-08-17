@@ -1,7 +1,7 @@
 {
   "name": "Copernicus",
   "short_name": "Copernicus",
-  "description": "A daily NASA newspaper of verified imagery and measurements.",
+  "description": "Search, explore, and visualize NASA (and many more) datasets from a single interface",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FDFDFC",
@@ -9,9 +9,15 @@
   "orientation": "any",
   "icons": [
     {
-      "src": "/copernicus-icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/copernicus.png",
+      "sizes": "400x400",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/copernicus_black.png",
+      "sizes": "400x400",
+      "type": "image/png",
       "purpose": "any"
     }
   ],

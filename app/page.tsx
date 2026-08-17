@@ -1,4 +1,5 @@
 ﻿import Link from "next/link";
+import { DonationPanel } from "./components/DonationPanel";
 import { HeaderTools } from "./components/HeaderTools";
 import { Sidebar } from "./components/Sidebar";
 import { formatKm, getDailyEdition } from "./lib/edition";
@@ -15,7 +16,7 @@ function distanceLabel(km: number) {
 
 function moonDistanceLabel(km: number) {
   const lunarDistances = km / 384_400;
-  return `${lunarDistances.toFixed(lunarDistances >= 10 ? 0 : 1)} times the average Earth–Moon distance`;
+  return `${lunarDistances.toFixed(lunarDistances >= 10 ? 0 : 1)} times the average distance from Earth to the Moon`;
 }
 
 function planetMeasure(
@@ -43,12 +44,12 @@ export default async function Home() {
       <Sidebar />
 
       <main id="main-content" className="feed">
-        <header className="feed-header" id="home">
+        <header className="feed-header">
           <h1>What&apos;s new today</h1>
           <HeaderTools />
         </header>
 
-        <section className="feature-section apod-section" id="apod">
+        <section className="feature-section apod-section">
           <div className="feature-heading">
             <h2><Link href={`/apod?date=${edition.apod?.date ?? edition.editionDate}`}>Astronomy picture of the day</Link></h2>
             <p>NASA APOD</p>
@@ -96,7 +97,7 @@ export default async function Home() {
           )}
         </section>
 
-        <section className="feature-section" id="near-earth">
+        <section className="feature-section">
           <div className="feature-heading">
             <h2><Link href="/near-earth">Near Earth today</Link></h2>
             <p>NASA NEO</p>
@@ -111,7 +112,10 @@ export default async function Home() {
                   <h3>Objects making a close approach</h3>
                   <p>
                     NASA lists these asteroids and comets near Earth for{" "}
-                    {edition.editionDate}.
+                    {new Intl.DateTimeFormat("en", {
+                      dateStyle: "long",
+                      timeZone: "UTC",
+                    }).format(new Date(`${edition.editionDate}T12:00:00Z`))}.
                   </p>
                 </div>
               </article>
@@ -124,7 +128,7 @@ export default async function Home() {
                   <h3>Potentially hazardous objects flagged</h3>
                   <p>
                     A flag means an object is large enough and passes close
-                    enough to receive extra attention—not that an impact is
+                    enough to receive extra attention. It does not mean an impact is
                     expected.
                   </p>
                 </div>
@@ -139,7 +143,7 @@ export default async function Home() {
                 <p className="fact-value fact-distance">
                   {edition.neo.closest
                     ? distanceLabel(edition.neo.closest.distanceKm)
-                    : "—"}
+                    : "Not available"}
                 </p>
                 <div>
                   <h3>Closest listed approach</h3>
@@ -157,7 +161,7 @@ export default async function Home() {
           )}
         </section>
 
-        <section className="feature-section" id="exoplanets">
+        <section className="feature-section">
           <div className="feature-heading">
             <h2><Link href="/exoplanets">Five recent discoveries</Link></h2>
             <p>NASA Exoplanet Archive</p>
@@ -190,7 +194,7 @@ export default async function Home() {
           )}
         </section>
 
-        <section className="feature-section" id="images">
+        <section className="feature-section">
           <div className="feature-heading">
             <h2><Link href="/image-library">Five latest image briefs</Link></h2>
             <p>NASA Image Library</p>
@@ -220,9 +224,6 @@ export default async function Home() {
                           }).format(new Date(image.date))
                         : "Date unavailable"}
                     </p>
-                    <p className="image-description">
-                      {image.description ?? "NASA did not provide a description for this image."}
-                    </p>
                   </div>
                 </article>
                 </Link>
@@ -249,6 +250,7 @@ export default async function Home() {
           Archive, and Image Library.
         </footer>
       </main>
+      <DonationPanel />
     </div>
   );
 }

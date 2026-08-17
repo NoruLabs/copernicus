@@ -28,9 +28,12 @@ Readers open the site to today's issue. A left feature menu opens dedicated APOD
 - English only for the first edition.
 - Automatic daily front page; no separate marketing landing page.
 - Dedicated archive pages preserve the same publication shell and load large catalogs in small batches.
+- The Image Library continues loading as the reader scrolls and opens full details without leaving the archive.
+- A donation rail uses the shared Noru Labs Polar checkout link on wide screens.
 - Keep the Next.js web stack.
 - Interface stays minimal; motion is limited to the Near Earth orbit icon, APOD download hover, and calendar reveal, with reduced-motion fallbacks.
 - Readers can switch between the paper-light and ink-dark themes from the issue header.
+- The current feature is emphasized in the navigation, and mobile navigation always includes a route home.
 - Canvas is a coming-soon creative workspace for composing with NASA imagery.
 - Do not fabricate news copy, quotes, or scientific claims beyond what the feeds provide.
 

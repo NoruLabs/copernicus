@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { ExternalLink, X } from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type {
   Batch,
   ImageRecord,
@@ -89,7 +90,7 @@ export function NeoArchive({
             <dl className="data-grid">
               <div><dt>Miss distance</dt><dd>{number(item.missDistanceKm, 0)} km</dd></div>
               <div><dt>Velocity</dt><dd>{number(item.velocityKms)} km/s</dd></div>
-              <div><dt>Estimated diameter</dt><dd>{number(item.estimatedDiameterMinKm)}–{number(item.estimatedDiameterMaxKm)} km</dd></div>
+              <div><dt>Estimated diameter</dt><dd>{number(item.estimatedDiameterMinKm)} to {number(item.estimatedDiameterMaxKm)} km</dd></div>
               <div><dt>Absolute magnitude</dt><dd>{number(item.absoluteMagnitude)}</dd></div>
               <div><dt>Orbiting body</dt><dd>{item.orbitingBody ?? "Not available"}</dd></div>
               <div><dt>NASA reference</dt><dd>{item.id}</dd></div>
@@ -183,8 +184,15 @@ export function ImageArchive({
   const [cursor, setCursor] = useState(initial.nextCursor);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(false);
+  const [activeId, setActiveId] = useState<string | null>(selected ?? null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  const activeImage = useMemo(
+    () => items.find((item) => item.id === activeId) ?? null,
+    [activeId, items],
+  );
 
-  async function load() {
+  const load = useCallback(async () => {
     if (!cursor || busy) return;
     setBusy(true);
     setError(false);
@@ -195,17 +203,47 @@ export function ImageArchive({
       );
       if (!response.ok) throw new Error();
       const batch = (await response.json()) as Batch<ImageRecord>;
-      setItems((current) => [...current, ...batch.items]);
+      setItems((current) => {
+        const known = new Set(current.map((item) => item.id));
+        return [
+          ...current,
+          ...batch.items.filter((item) => !known.has(item.id)),
+        ];
+      });
       setCursor(batch.nextCursor);
     } catch {
       setError(true);
     } finally {
       setBusy(false);
     }
+  }, [busy, cursor]);
+
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel || !cursor || error) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) void load();
+      },
+      { rootMargin: "600px 0px" },
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [cursor, error, load]);
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    if (activeImage && !dialog.open) dialog.showModal();
+    if (!activeImage && dialog.open) dialog.close();
+  }, [activeImage]);
+
+  function closeDetail() {
+    setActiveId(null);
   }
 
   return (
-    <>
+    <div className="image-archive">
       <div className="masonry">
         {items.map((item) => (
           <article
@@ -214,23 +252,123 @@ export function ImageArchive({
             id={`image-${item.id}`}
             key={item.id}
           >
-            <a href={`/image-library?item=${encodeURIComponent(item.id)}`}>
+            <button
+              aria-label={`View details for ${item.title}`}
+              className="image-open"
+              onClick={() => setActiveId(item.id)}
+              type="button"
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={item.thumbnailUrl} alt={item.title} loading="lazy" />
-              <h2>{item.title}</h2>
-            </a>
-            <p className="meta">
-              {item.date ? new Date(item.date).toLocaleDateString("en", { dateStyle: "medium" }) : "Date unavailable"}
-              {item.center ? ` · ${item.center}` : ""}
-            </p>
-            {selected === item.id && item.description ? (
-              <p className="tile-description">{item.description}</p>
-            ) : null}
+            </button>
+            <div className="image-tile-copy">
+              <div>
+                <h2>{item.title}</h2>
+                <p className="meta">
+                  {item.date
+                    ? new Date(item.date).toLocaleDateString("en", {
+                        dateStyle: "medium",
+                      })
+                    : "Date unavailable"}
+                  {item.center ? ` · ${item.center}` : ""}
+                </p>
+              </div>
+              <a
+                aria-label={`Open ${item.title} on NASA Images`}
+                className="image-source-icon"
+                href={`https://images.nasa.gov/details/${encodeURIComponent(item.id)}`}
+                rel="noreferrer"
+                target="_blank"
+                title="Open on NASA Images"
+              >
+                <ExternalLink aria-hidden="true" />
+              </a>
+            </div>
           </article>
         ))}
       </div>
       {error ? <p className="load-error">More images could not be loaded. Try again.</p> : null}
-      <LoadMore busy={busy} cursor={cursor} onLoad={load} />
-    </>
+      {error ? (
+        <div className="load-more-row">
+          <button className="load-more" onClick={() => void load()} type="button">
+            Try again
+          </button>
+        </div>
+      ) : null}
+      <div className="infinite-sentinel" ref={sentinelRef}>
+        {busy ? (
+          <p role="status">Loading more images</p>
+        ) : cursor ? (
+          <p>Scroll for more</p>
+        ) : (
+          <p>You have reached the end of this archive.</p>
+        )}
+      </div>
+
+      <dialog
+        aria-labelledby={activeImage ? `image-detail-${activeImage.id}` : undefined}
+        className="image-detail-dialog"
+        onCancel={(event) => {
+          event.preventDefault();
+          closeDetail();
+        }}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) closeDetail();
+        }}
+        ref={dialogRef}
+      >
+        {activeImage ? (
+          <article className="image-detail">
+            <button
+              aria-label="Close image details"
+              className="image-detail-close"
+              onClick={closeDetail}
+              type="button"
+            >
+              <X aria-hidden="true" />
+            </button>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={activeImage.thumbnailUrl} alt={activeImage.title} />
+            <div className="image-detail-copy">
+              <div className="image-detail-heading">
+                <div>
+                  <h2 id={`image-detail-${activeImage.id}`}>
+                    {activeImage.title}
+                  </h2>
+                  <p className="meta">
+                    {activeImage.date
+                      ? new Date(activeImage.date).toLocaleDateString("en", {
+                          dateStyle: "long",
+                        })
+                      : "Date unavailable"}
+                    {activeImage.center ? ` · ${activeImage.center}` : ""}
+                  </p>
+                </div>
+                <a
+                  aria-label={`Open ${activeImage.title} on NASA Images`}
+                  className="image-source-icon"
+                  href={`https://images.nasa.gov/details/${encodeURIComponent(activeImage.id)}`}
+                  rel="noreferrer"
+                  target="_blank"
+                  title="Open on NASA Images"
+                >
+                  <ExternalLink aria-hidden="true" />
+                </a>
+              </div>
+              {activeImage.description ? (
+                <p className="image-detail-description">
+                  {activeImage.description}
+                </p>
+              ) : null}
+              {activeImage.keywords.length > 0 ? (
+                <p className="image-keywords">
+                  {activeImage.keywords.join(" · ")}
+                </p>
+              ) : null}
+            </div>
+          </article>
+        ) : null}
+      </dialog>
+    </div>
   );
 }

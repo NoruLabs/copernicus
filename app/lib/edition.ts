@@ -37,7 +37,6 @@ export type EditionImage = {
   title: string;
   date: string | null;
   thumbnailUrl: string;
-  description: string | null;
 };
 
 export type DailyEdition = {
@@ -179,8 +178,6 @@ async function loadImages(): Promise<EditionImage[]> {
         nasa_id?: string;
         title?: string;
         date_created?: string;
-        description?: string;
-        description_508?: string;
       }>;
       links?: Array<{ rel?: string; href?: string }>;
     }) => {
@@ -196,9 +193,6 @@ async function loadImages(): Promise<EditionImage[]> {
         title: info.title,
         date: info.date_created ?? null,
         thumbnailUrl,
-        description: summarizeDescription(
-          info.description_508 ?? info.description ?? null,
-        ),
       };
     })
     .filter((item: EditionImage | null): item is EditionImage => item !== null)
@@ -208,21 +202,6 @@ async function loadImages(): Promise<EditionImage[]> {
       return bTime - aTime;
     })
     .slice(0, 5);
-}
-
-function summarizeDescription(value: string | null) {
-  if (!value) {
-    return null;
-  }
-
-  const text = value.replace(/\s+/g, " ").trim();
-  if (text.length <= 220) {
-    return text;
-  }
-
-  const shortened = text.slice(0, 220);
-  const lastSpace = shortened.lastIndexOf(" ");
-  return `${shortened.slice(0, lastSpace > 160 ? lastSpace : 220)}…`;
 }
 
 export async function getDailyEdition(): Promise<DailyEdition> {
