@@ -15,6 +15,7 @@ export type EditionNeo = {
   count: number;
   hazardous: number;
   closest: {
+    id: string;
     name: string;
     distanceKm: number;
     velocityKms: number;
@@ -94,6 +95,7 @@ async function loadNeo(editionDate: string): Promise<EditionNeo> {
   );
 
   const objects = Object.values(data?.near_earth_objects ?? {}).flat() as Array<{
+    id?: string;
     name?: string;
     is_potentially_hazardous_asteroid?: boolean;
     close_approach_data?: Array<{
@@ -117,6 +119,7 @@ async function loadNeo(editionDate: string): Promise<EditionNeo> {
 
     if (!closest || distanceKm < closest.distanceKm) {
       closest = {
+        id: object.id ?? object.name,
         name: object.name,
         distanceKm,
         velocityKms: Number.isFinite(velocityKms) ? velocityKms : 0,
@@ -135,7 +138,7 @@ async function loadNeo(editionDate: string): Promise<EditionNeo> {
 
 async function loadPlanets(): Promise<EditionPlanet[]> {
   const query =
-    "SELECT TOP 5 pl_name, hostname, disc_year, pl_rade, sy_dist, discoverymethod FROM pscomppars WHERE disc_year IS NOT NULL ORDER BY disc_year DESC";
+    "SELECT TOP 5 pl_name, hostname, disc_year, pl_rade, sy_dist, discoverymethod, disc_pubdate FROM pscomppars WHERE disc_year IS NOT NULL AND disc_pubdate IS NOT NULL ORDER BY disc_pubdate DESC, pl_name ASC";
   const data = await fetchJson(
     `https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=${encodeURIComponent(query)}&format=json`,
   );
