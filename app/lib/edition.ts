@@ -86,7 +86,7 @@ async function loadApod(): Promise<EditionApod> {
     title: data.title,
     date: data.date,
     explanation: data.explanation ?? "",
-    url: data.hdurl || data.url,
+    url: data.url,
     mediaType:
       data.media_type === "image" || data.media_type === "video"
         ? data.media_type

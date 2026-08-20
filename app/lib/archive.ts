@@ -26,7 +26,7 @@ export type NeoRecord = {
   approachDateFull: string | null;
   velocityKms: number | null;
   missDistanceKm: number | null;
-  orbitingBody: string | null;
+  orbitClass: string | null;
   nasaUrl: string | null;
 };
 
@@ -67,6 +67,40 @@ async function fetchJson(url: string, revalidateSeconds = 300) {
   }
   return response.json();
 }
+
+const ORBIT_CLASS_NAMES: Record<string, string> = {
+  APO: "Apollo",
+  AMO: "Amor",
+  ATE: "Aten",
+  ATI: "Atira",
+  IEO: "Atira",
+};
+
+function formatOrbitClass(data: Record<string, unknown> | null | undefined) {
+  const orbitClass = data?.orbital_data as
+    | { orbit_class?: { orbit_class_type?: string } }
+    | undefined;
+  const type = orbitClass?.orbit_class?.orbit_class_type?.trim().toUpperCase();
+  if (!type) return null;
+  return ORBIT_CLASS_NAMES[type] ?? type;
+}
+
+const getNeoOrbitClass = unstable_cache(
+  async (id: string): Promise<string | null> => {
+    if (!/^\d+$/.test(id)) return null;
+    try {
+      const data = await fetchJson(
+        `https://api.nasa.gov/neo/rest/v1/neo/${id}?api_key=${encodeURIComponent(NASA_API_KEY)}`,
+        86_400,
+      );
+      return formatOrbitClass(data);
+    } catch {
+      return null;
+    }
+  },
+  ["neo-orbit-class-v1"],
+  { revalidate: 86_400 },
+);
 
 function isoDate(date: Date) {
   return date.toISOString().slice(0, 10);
@@ -154,9 +188,7 @@ export async function getNeoBatch(cursor?: string): Promise<Batch<NeoRecord>> {
         missDistanceKm: Number.isFinite(Number(distance?.kilometers))
           ? Number(distance?.kilometers)
           : null,
-        orbitingBody: approach?.orbiting_body
-          ? String(approach.orbiting_body)
-          : null,
+        orbitClass: null,
         nasaUrl: object.nasa_jpl_url ? String(object.nasa_jpl_url) : null,
       });
     }
@@ -167,7 +199,13 @@ export async function getNeoBatch(cursor?: string): Promise<Batch<NeoRecord>> {
     return dateOrder || a.name.localeCompare(b.name);
   });
 
-  const items = records.slice(offset, offset + 20);
+  const page = records.slice(offset, offset + 20);
+  const items = await Promise.all(
+    page.map(async (item) => ({
+      ...item,
+      orbitClass: item.id ? await getNeoOrbitClass(item.id) : null,
+    })),
+  );
   const nextCursor =
     offset + 20 < records.length
       ? `${cursorDate}:${offset + 20}`
@@ -227,9 +265,7 @@ export async function getNeoById(id: string): Promise<NeoRecord | null> {
     missDistanceKm: Number.isFinite(Number(distance?.kilometers))
       ? Number(distance?.kilometers)
       : null,
-    orbitingBody: approach.orbiting_body
-      ? String(approach.orbiting_body)
-      : null,
+    orbitClass: formatOrbitClass(data),
     nasaUrl: data.nasa_jpl_url ? String(data.nasa_jpl_url) : null,
   };
 }

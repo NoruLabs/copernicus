@@ -92,7 +92,7 @@ export function NeoArchive({
               <div><dt>Velocity</dt><dd>{number(item.velocityKms)} km/s</dd></div>
               <div><dt>Estimated diameter</dt><dd>{number(item.estimatedDiameterMinKm)} to {number(item.estimatedDiameterMaxKm)} km</dd></div>
               <div><dt>Absolute magnitude</dt><dd>{number(item.absoluteMagnitude)}</dd></div>
-              <div><dt>Orbiting body</dt><dd>{item.orbitingBody ?? "Not available"}</dd></div>
+              <div><dt>Orbit class</dt><dd>{item.orbitClass ?? "Not available"}</dd></div>
               <div><dt>NASA reference</dt><dd>{item.id}</dd></div>
             </dl>
             {item.nasaUrl ? <a className="source-link" href={item.nasaUrl}>Open NASA JPL record</a> : null}
