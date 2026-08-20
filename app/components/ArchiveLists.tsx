@@ -8,6 +8,12 @@ import type {
   NeoRecord,
   PlanetRecord,
 } from "../lib/archive";
+import {
+  NeoIllustration,
+  NeoIllustrationRoot,
+  PlanetIllustration,
+  PlanetIllustrationRoot,
+} from "./object-stage";
 
 function number(value: number | null, digits = 2) {
   return value == null
@@ -67,7 +73,7 @@ export function NeoArchive({
   }
 
   return (
-    <>
+    <NeoIllustrationRoot>
       <div className="archive-list">
         {items.map((item) => (
           <article
@@ -76,6 +82,7 @@ export function NeoArchive({
             id={`object-${item.id}`}
             key={`${item.id}-${item.approachDateFull ?? item.approachDate}`}
           >
+            <NeoIllustration item={item} />
             <div className="record-heading">
               <div>
                 <h2>{item.name}</h2>
@@ -101,7 +108,7 @@ export function NeoArchive({
       </div>
       {error ? <p className="load-error">More records could not be loaded. Try again.</p> : null}
       <LoadMore busy={busy} cursor={cursor} onLoad={load} />
-    </>
+    </NeoIllustrationRoot>
   );
 }
 
@@ -138,7 +145,7 @@ export function PlanetArchive({
   }
 
   return (
-    <>
+    <PlanetIllustrationRoot>
       <div className="archive-list">
         {items.map((item) => (
           <article
@@ -147,6 +154,7 @@ export function PlanetArchive({
             id={`planet-${encodeURIComponent(item.name)}`}
             key={`${item.name}-${item.host}`}
           >
+            <PlanetIllustration item={item} />
             <div className="record-heading">
               <div>
                 <h2>{item.name}</h2>
@@ -169,7 +177,7 @@ export function PlanetArchive({
       </div>
       {error ? <p className="load-error">More records could not be loaded. Try again.</p> : null}
       <LoadMore busy={busy} cursor={cursor} onLoad={load} />
-    </>
+    </PlanetIllustrationRoot>
   );
 }
 

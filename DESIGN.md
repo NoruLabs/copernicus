@@ -189,7 +189,7 @@ The system is fully flat. There are no shadows, gradients, glows, translucent pa
 ### Named Rules
 **The Printed Plane Rule.** Every element rests on the paper. Use borders, rules, and spacing for structure; never simulate floating interface layers.
 
-**The Bounded Motion Rule.** Motion appears only in the Near Earth orbit icon, APOD download flair, and calendar reveal; all honor reduced-motion preferences. Theme, skip-link, and navigation state changes remain immediate.
+**The Bounded Motion Rule.** Motion appears in the Near Earth orbit icon, APOD download flair, calendar reveal, and archive object illustrations; all honor reduced-motion preferences. Theme, skip-link, and navigation state changes remain immediate.
 
 ## Shapes
 
@@ -233,6 +233,13 @@ Content geometry is square (`0` radius): plates, thumbs, section bands, and rows
 - **Character:** Five discovery records in a ruled list.
 - **Structure:** Serif name, muted host/method/year meta, right-aligned sans figure (radius × Earth and light-years when available).
 
+### Archive object illustrations
+- **Character:** Data-mapped ephemeris diagrams for Near Earth and Exoplanet archive records, not decorative sci-fi chrome.
+- **Structure:** A full-width Media Stage plate (16 / 9) above each record, rendered through one shared WebGL canvas with View ports.
+- **Mapping:** NEO size, miss distance, velocity, hazard, and orbit class drive the asteroid and path; exoplanet radius, temperature, period, and distance drive the world and orbit tempo.
+- **Motion:** Continuous 60fps orbit while the plate is on screen; Framer Motion handles a single soft entrance. Reduced motion freezes the pose.
+- **Performance:** Shared geometries, MeshBasicMaterial, capped DPR, visibility-gated updates, and no per-card WebGL contexts.
+
 ### Image brief rows
 - **Character:** Five latest library releases as compact ruled briefs.
 - **Structure:** Rectangular thumb, serif title, and muted date.
@@ -264,7 +271,7 @@ Content geometry is square (`0` radius): plates, thumbs, section bands, and rows
 
 ### Don't:
 - **Don't** reintroduce warm cream paper, measure green, GIBS / Earth observation plates, deck copy, cards, or decorative color.
-- **Don't** add shadows, gradients, glow, glass, or motion beyond the three named exceptions.
+- **Don't** add shadows, gradients, glow, glass, or motion beyond the named exceptions (orbit icon, APOD download flair, calendar reveal, and archive object illustrations).
 - **Don't** add kickers, eyebrows, slogans, promotional copy, or dashboard chrome.
 - **Don't** frame APOD or thumbs as bordered cards or floating media tiles.
 - **Don't** turn the edition into a landing page, endpoint catalog, or multi-panel analytics shell.

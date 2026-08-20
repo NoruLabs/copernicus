@@ -33,7 +33,8 @@ Readers open the site to today's issue. A left feature menu opens dedicated APOD
 - The Image Library continues loading as the reader scrolls and opens full details without leaving the archive.
 - A donation rail uses the shared Noru Labs Polar checkout link on wide screens.
 - Keep the Next.js web stack.
-- Interface stays minimal; motion is limited to the Near Earth orbit icon, APOD download hover, and calendar reveal, with reduced-motion fallbacks.
+- Interface stays minimal; motion is limited to the Near Earth orbit icon, APOD download hover, calendar reveal, and data-driven archive object illustrations, with reduced-motion fallbacks.
+- Near Earth and Exoplanet archive records include a shared-canvas Three.js illustration mapped from live NASA measurements.
 - Readers can switch between the paper-light and ink-dark themes from the issue header.
 - The current feature is emphasized in the navigation, and mobile navigation always includes a route home.
 - Canvas is a coming-soon creative workspace for composing with NASA imagery.
