@@ -36,6 +36,8 @@ export type PlanetRecord = {
   discoveryYear: number;
   discoveryDate: string | null;
   discoveryMethod: string | null;
+  discoveryUrl: string | null;
+  discoveryLabel: string | null;
   radiusEarth: number | null;
   massEarth: number | null;
   temperatureK: number | null;
@@ -145,6 +147,7 @@ export async function getNeoBatch(cursor?: string): Promise<Batch<NeoRecord>> {
   });
   const data = await fetchJson(
     `https://api.nasa.gov/neo/rest/v1/feed?${params}`,
+    60,
   );
   const records: NeoRecord[] = [];
 
@@ -195,7 +198,9 @@ export async function getNeoBatch(cursor?: string): Promise<Batch<NeoRecord>> {
   }
 
   records.sort((a, b) => {
-    const dateOrder = b.approachDate.localeCompare(a.approachDate);
+    const aStamp = a.approachDateFull ?? a.approachDate;
+    const bStamp = b.approachDateFull ?? b.approachDate;
+    const dateOrder = bStamp.localeCompare(aStamp);
     return dateOrder || a.name.localeCompare(b.name);
   });
 
@@ -270,6 +275,28 @@ export async function getNeoById(id: string): Promise<NeoRecord | null> {
   };
 }
 
+function parseDiscoveryReference(value: unknown): {
+  url: string | null;
+  label: string | null;
+} {
+  if (typeof value !== "string" || !value.trim()) {
+    return { url: null, label: null };
+  }
+  const hrefMatch = value.match(/href=([^\s>]+)/i);
+  const labelMatch = value.match(/>([^<]+)<\/a>/i);
+  const rawUrl = hrefMatch?.[1]?.replaceAll("&amp;", "&") ?? null;
+  const url =
+    rawUrl && /^https?:\/\//i.test(rawUrl) ? rawUrl : null;
+  const label = labelMatch?.[1]
+    ? labelMatch[1]
+        .replaceAll("&amp;", "&")
+        .replaceAll("&ntilde;", "ñ")
+        .replaceAll("&Ntilde;", "Ñ")
+        .trim()
+    : null;
+  return { url, label };
+}
+
 export async function getPlanetBatch(
   cursor?: string,
 ): Promise<Batch<PlanetRecord>> {
@@ -281,29 +308,35 @@ export async function getPlanetBatch(
   let offset = Math.max(0, Number(rawOffset) || 0);
 
   while (year >= 1992) {
-    const query = `SELECT pl_name, hostname, disc_year, disc_pubdate, discoverymethod, pl_rade, pl_bmasse, pl_eqt, sy_dist, pl_orbper FROM pscomppars WHERE disc_year = ${year} AND disc_pubdate IS NOT NULL ORDER BY disc_pubdate DESC, pl_name ASC`;
+    const query = `SELECT pl_name, hostname, disc_year, disc_pubdate, discoverymethod, disc_refname, pl_rade, pl_bmasse, pl_eqt, sy_dist, pl_orbper FROM pscomppars WHERE disc_year = ${year} AND disc_pubdate IS NOT NULL ORDER BY disc_pubdate DESC, pl_name ASC`;
     const data = await fetchJson(
       `${EXOPLANET_API}?query=${encodeURIComponent(query)}&format=json`,
+      60,
     );
     const rows = Array.isArray(data) ? data : [];
     const records: PlanetRecord[] = rows
-      .map((row) => ({
-        name: String(row.pl_name ?? "Unnamed planet"),
-        host: String(row.hostname ?? "Unknown host"),
-        discoveryYear: Number(row.disc_year),
-        discoveryDate: row.disc_pubdate
-          ? String(row.disc_pubdate).slice(0, 10)
-          : null,
-        discoveryMethod: row.discoverymethod
-          ? String(row.discoverymethod)
-          : null,
-        radiusEarth: typeof row.pl_rade === "number" ? row.pl_rade : null,
-        massEarth: typeof row.pl_bmasse === "number" ? row.pl_bmasse : null,
-        temperatureK: typeof row.pl_eqt === "number" ? row.pl_eqt : null,
-        distancePc: typeof row.sy_dist === "number" ? row.sy_dist : null,
-        orbitalPeriodDays:
-          typeof row.pl_orbper === "number" ? row.pl_orbper : null,
-      }))
+      .map((row) => {
+        const discovery = parseDiscoveryReference(row.disc_refname);
+        return {
+          name: String(row.pl_name ?? "Unnamed planet"),
+          host: String(row.hostname ?? "Unknown host"),
+          discoveryYear: Number(row.disc_year),
+          discoveryDate: row.disc_pubdate
+            ? String(row.disc_pubdate).slice(0, 10)
+            : null,
+          discoveryMethod: row.discoverymethod
+            ? String(row.discoverymethod)
+            : null,
+          discoveryUrl: discovery.url,
+          discoveryLabel: discovery.label,
+          radiusEarth: typeof row.pl_rade === "number" ? row.pl_rade : null,
+          massEarth: typeof row.pl_bmasse === "number" ? row.pl_bmasse : null,
+          temperatureK: typeof row.pl_eqt === "number" ? row.pl_eqt : null,
+          distancePc: typeof row.sy_dist === "number" ? row.sy_dist : null,
+          orbitalPeriodDays:
+            typeof row.pl_orbper === "number" ? row.pl_orbper : null,
+        };
+      })
       .sort((a, b) => {
         const dateOrder = (b.discoveryDate ?? "").localeCompare(
           a.discoveryDate ?? "",

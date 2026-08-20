@@ -28,7 +28,7 @@ Readers open the site to today's issue. A left feature menu opens dedicated APOD
 - English only for the first edition.
 - Automatic daily front page; no separate marketing landing page.
 - Dedicated archive pages preserve the same publication shell and load large catalogs in small batches.
-- Current APOD data refreshes every minute, exoplanet data refreshes every five minutes, and globally sorted image indexes refresh every thirty minutes.
+- Current APOD data refreshes every minute, Near Earth and Exoplanet catalogs refresh about every minute so new NASA releases surface quickly, and globally sorted image indexes refresh every thirty minutes.
 - Route transitions keep the feature rail mounted and show skeleton placeholders until page data arrives.
 - The Image Library continues loading as the reader scrolls and opens full details without leaving the archive.
 - A donation rail uses the shared Noru Labs Polar checkout link on wide screens.

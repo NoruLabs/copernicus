@@ -3,7 +3,7 @@ import { PageShell } from "../../components/PageShell";
 import type { Batch, PlanetRecord } from "../../lib/archive";
 import { getPlanetBatch } from "../../lib/archive";
 
-export const revalidate = 300;
+export const revalidate = 60;
 
 export default async function ExoplanetsPage({
   searchParams,

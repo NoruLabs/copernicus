@@ -3,7 +3,7 @@ import { PageShell } from "../../components/PageShell";
 import type { Batch, NeoRecord } from "../../lib/archive";
 import { getNeoBatch, getNeoById } from "../../lib/archive";
 
-export const revalidate = 300;
+export const revalidate = 60;
 
 export default async function NearEarthPage({
   searchParams,

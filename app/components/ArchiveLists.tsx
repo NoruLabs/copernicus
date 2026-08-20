@@ -172,6 +172,18 @@ export function PlanetArchive({
               <div><dt>Distance</dt><dd>{number(item.distancePc)} parsecs</dd></div>
               <div><dt>Orbital period</dt><dd>{number(item.orbitalPeriodDays)} days</dd></div>
             </dl>
+            {item.discoveryUrl ? (
+              <a
+                className="source-link"
+                href={item.discoveryUrl}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {item.discoveryLabel
+                  ? `Open discovery: ${item.discoveryLabel}`
+                  : "Open discovery paper"}
+              </a>
+            ) : null}
           </article>
         ))}
       </div>
